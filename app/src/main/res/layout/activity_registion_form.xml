@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/background2"
+    tools:context=".admission.RegistrationForm">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:focusableInTouchMode="true"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linearlayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/deepPurple"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/circle_stroke_white"
+                        android:contentDescription="@string/image"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_register"
+                        app:tint="#fff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:text="@string/register_form"
+                        android:textColor="#fff"
+                        android:textSize="22sp"
+                        tools:ignore="TextViewEdits" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/linearlayout1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    android:contentDescription="@string/todo"
+                    android:rotation="45"
+                    android:src="@drawable/square" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageView1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/imageView_user_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/deepPurple"
+                        android:contentDescription="@string/todo"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_man_user"
+                        app:tint="#fff" />
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/imageView_user_icon"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@id/imageView_user_icon"
+                        android:autofillHints="FullName"
+                        android:background="@color/transparent"
+                        android:hint="@string/child_s_name"
+                        android:inputType="text"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout2"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/imageView_user_email"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/deepPurple"
+                        android:contentDescription="@string/todo"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_man_user"
+                        app:tint="#fff" />
+
+                    <EditText
+                        android:id="@+id/fathersName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/imageView_user_email"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@id/imageView_user_email"
+                        android:background="@color/transparent"
+                        android:hint="@string/father_s_name"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout3"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/imageView_user_pass"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/deepPurple"
+                        android:contentDescription="@string/todo"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_id_Card"
+                        app:tint="#fff" />
+
+                    <EditText
+                        android:id="@+id/fatherNid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/imageView_user_pass"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@id/imageView_user_pass"
+                        android:background="@color/transparent"
+                        android:hint="@string/father_nrc_number"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout4"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/imageView_user_repass"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/deepPurple"
+                        android:contentDescription="@string/todo"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_phone"
+                        app:tint="#fff" />
+
+                    <EditText
+                        android:id="@+id/fathersContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/imageView_user_repass"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@id/imageView_user_repass"
+                        android:background="@color/transparent"
+                        android:hint="@string/father_phone_number"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout5"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/imageView_user_mName"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/deepPurple"
+                        android:contentDescription="@string/todo"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_man_user"
+                        app:tint="#fff" />
+
+                    <EditText
+                        android:id="@+id/mothersName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/imageView_user_mName"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@id/imageView_user_mName"
+                        android:background="@color/transparent"
+                        android:hint="@string/mother_s_name"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout6"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@color/green_700"
+                    android:fontFamily="sans-serif"
+
+                    android:text="@string/submit"
+                    android:textColor="#fff" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>

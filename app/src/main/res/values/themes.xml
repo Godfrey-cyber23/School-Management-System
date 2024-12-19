@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Theme.LTS_Plus" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Default font family -->
+        <item name="fontFamily">@font/awesome</item>
+
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryVariant">@color/red</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+
+        <!-- System splash screen attributes for Android 12+ -->
+        <item name="android:windowSplashScreenBackground">@color/light_green_300</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/school_logo</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.LTS_Plus</item>
+    </style>
+
+    <!-- Style for progress bars -->
+    <style name="ProgressBar">
+        <item name="colorSecondary">@color/red</item>
+    </style>
+</resources>

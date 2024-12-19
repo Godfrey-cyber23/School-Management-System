@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_video"
+        android:icon="@drawable/newvideo"
+        android:title="@string/video_lecture" />
+
+    <item
+        android:id="@+id/navigation_ebook"
+        android:icon="@drawable/newbook"
+        android:title="@string/book" />
+
+    <!--    <item-->
+    <!--        android:id="@+id/navigation_studentList"-->
+    <!--        android:icon="@drawable/mortarboard"-->
+    <!--        android:title="Student" />-->
+
+
+    <item
+        android:id="@+id/navigation_website"
+        android:icon="@drawable/newwebsite"
+        android:title="@string/website" />
+
+
+    <item
+        android:id="@+id/navigation_share"
+        android:icon="@drawable/newshare"
+        android:title="@string/share" />
+
+    <item
+        android:id="@+id/navigation_rate"
+        android:icon="@drawable/newrate"
+        android:title="@string/rate_the_app" />
+
+
+    <item
+        android:id="@+id/navigation_result"
+        android:icon="@drawable/newresult"
+        android:title="@string/result" />
+
+
+    <item
+        android:id="@+id/navigation_admission"
+        android:icon="@drawable/newadmission"
+        android:title="@string/admission_form" />
+
+    <item
+        android:id="@+id/navigation_contact"
+        android:icon="@drawable/contact"
+        android:title="@string/contact_us" />
+
+    <item
+        android:id="@+id/navigation_developer"
+        android:icon="@drawable/newuser"
+        android:title="@string/developer" />
+
+
+    <!--    <item android:id="@+id/navigation_theme"-->
+    <!--        android:title="Themes"-->
+    <!--        android:icon="@drawable/theme"/>-->
+
+
+    <!--    <item android:id="@+id/logout"-->
+    <!--        android:title="Logout"-->
+    <!--        android:icon="@drawable/new_logout"/>-->
+
+
+</menu>

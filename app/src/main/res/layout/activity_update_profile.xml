@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".phone_Auth.UpdateProfile">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarofupdateprofile"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#0277bd">
+
+        <!-- Toolbar Content -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Back Button -->
+            <ImageButton
+                android:id="@+id/backbuttonofupdateprofile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/image"
+                android:src="@drawable/ic_back" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/myapptext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/backbuttonofupdateprofile"
+                android:layout_marginStart="10dp"
+                android:text="@string/update_profile"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Profile Image -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/getnewuserimage"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="65dp">
+
+        <ImageView
+            android:id="@+id/getnewuserimageimageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile2" />
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/getnewusername"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/getnewuserimage"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="40dp"
+        android:autofillHints="Username"
+        android:textAlignment="center"
+        android:hint="@string/enter_your_new_name_here"
+        android:inputType="textCapWords" />
+
+    <Button
+        android:id="@+id/updateprofilebutton"
+        android:layout_width="182dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/getnewusername"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="106dp"
+        android:background="@color/titleColorBd"
+        android:text="@string/update_profile"
+        android:textColor="@color/white" />
+
+    <ProgressBar
+        android:id="@+id/progressbarofupdateprofile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/updateprofilebutton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="171dp"
+        android:visibility="invisible" />
+
+</RelativeLayout>

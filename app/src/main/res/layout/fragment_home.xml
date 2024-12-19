@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Message from the Head Teacher -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textAlignment="center"
+                    android:text="@string/message_from_the_head_teacher"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:background="@drawable/headerfooter_bg"
+                    android:padding="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/head_teacher_literacy_tree_school"
+                    android:textColor="@color/textHistory"
+                    android:textSize="@dimen/text_size"
+                    android:layout_marginTop="@dimen/text_margin"
+                    android:layout_marginHorizontal="@dimen/text_margin" />
+
+
+            </LinearLayout>
+
+            <!-- History of the School Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:text="@string/history_of_the_school"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:background="@drawable/headerfooter_bg"
+                android:padding="4dp"
+                android:layout_marginTop="36dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/about_collage1"
+                android:textColor="@color/textHistory"
+                android:textSize="@dimen/text_size"
+                android:layout_marginHorizontal="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin" />
+
+            <!-- Division Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:background="@color/grey2">
+
+                <!-- Upper Primary and Lower Primary Divisions -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="36dp"
+                    android:orientation="vertical">
+
+                    <!-- Division Title -->
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/text_margin"
+                        android:textAlignment="center"
+                        android:background="@color/grey2"
+                        android:text="@string/division"
+                        android:textColor="@color/darkColor"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:layout_width="162dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/text_margin"
+                        android:background="@drawable/headerfooter_bg"
+                        android:text="@string/upper_primary"
+                        android:textAlignment="center"
+                        android:textColor="@color/defaultTextColor"
+                        android:textSize="25sp" />
+
+                    <!-- Upper Primary Section -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#fff"
+                            android:orientation="vertical">
+
+                            <!-- List of Subjects for Upper Primary -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/science_division"
+                                android:textColor="@color/textHistory"
+                                android:textSize="@dimen/text_size" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/grey" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/social_studies"
+                                android:textColor="@color/textHistory"
+                                android:textSize="@dimen/text_size" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/grey" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/english"
+                                android:textColor="@color/textHistory"
+                                android:textSize="@dimen/text_size" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/grey" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/mathematics"
+                                android:textColor="@color/textHistory"
+                                android:textSize="@dimen/text_size" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/grey" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/creative_and_technology_studies"
+                                android:textColor="@color/textHistory"
+                                android:textSize="@dimen/text_size" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/grey" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/information_technology"
+                                android:textColor="@color/textHistory"
+                                android:textSize="@dimen/text_size" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/grey" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/special_paper_1"
+                                android:textColor="@color/textHistory"
+                                android:textSize="@dimen/text_size" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/grey" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/special_paper_2"
+                                android:textColor="@color/textHistory"
+                                android:textSize="@dimen/text_size" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Lower Primary Divisions -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="36dp"
+                android:orientation="vertical">
+
+                <!-- Division Title -->
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/text_margin"
+                    android:textAlignment="center"
+                    android:background="@drawable/headerfooter_bg"
+                    android:text="@string/lower_primary"
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
+
+                <!-- Upper Primary Section -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:orientation="vertical">
+
+                        <!-- List of Subjects for Upper Primary -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/science_division"
+                            android:textColor="@color/textHistory"
+                            android:textSize="@dimen/text_size" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/social_studies"
+                            android:textColor="@color/textHistory"
+                            android:textSize="@dimen/text_size" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/english"
+                            android:textColor="@color/textHistory"
+                            android:textSize="@dimen/text_size" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/mathematics"
+                            android:textColor="@color/textHistory"
+                            android:textSize="@dimen/text_size" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/creative_and_technology_studies"
+                            android:textColor="@color/textHistory"
+                            android:textSize="@dimen/text_size" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/information_technology"
+                            android:textColor="@color/textHistory"
+                            android:textSize="@dimen/text_size" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- Contact Information -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/text_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/contact_information"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/headerfooter_bg"
+                    android:padding="4dp"
+                    android:layout_marginTop="36dp" />
+
+                <!-- Address and Contact Details -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_margin"
+                    android:text="@string/literacy_tree_school"
+                    android:textColor="@color/textHistory"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_margin"
+                    android:text="@string/makeni_bonaventure"
+                    android:textColor="@color/textHistory"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_margin"
+                    android:text="@string/phone_260975755276_0760747539"
+                    android:textColor="@color/textHistory"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_margin"
+                    android:text="@string/email_godfrey998_gmail_com"
+                    android:textColor="@color/textHistory"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_margin"
+                    android:text="@string/developer_godfrey_bwalya"
+                    android:textColor="@color/textHistory"
+                    android:textSize="@dimen/text_size" />
+
+                <!-- Map Section -->
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textAlignment="center"
+                    android:text="@string/map"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/headerfooter_bg"
+                    android:padding="4dp"
+                    android:layout_marginTop="36dp" />
+
+                <ImageView
+                    android:id="@+id/mapp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/map" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

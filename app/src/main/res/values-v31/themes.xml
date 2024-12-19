@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.LTS_Plus" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Default font family -->
+        <item name="fontFamily">@font/awesome</item>
+
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryVariant">@color/red</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- System splash screen attributes for Android 12+ -->
+        <item name="android:windowSplashScreenBackground">@color/red</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.LTS_Plus</item>
+    </style>
+
+    <style name="Theme.LTS_Plus" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Default font family -->
+        <item name="fontFamily">@font/awesome</item>
+
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryVariant">@color/red</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- System splash screen attributes for Android 12+ -->
+        <item name="android:windowSplashScreenBackground">@color/light_green_300</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/school_logo</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.LTS_Plus</item>
+    </style>
+</resources>

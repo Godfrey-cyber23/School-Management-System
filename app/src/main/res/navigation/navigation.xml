@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/navigation_home">
+
+    <!-- Home Fragment -->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.LTS_Plus.ui.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+
+    <!-- Notice Fragment -->
+    <fragment
+        android:id="@+id/navigation_notice"
+        android:name="com.example.LTS_Plus.ui.notice.NoticeFragment"
+        android:label="Notice"
+        tools:layout="@layout/fragment_notice" />
+
+    <!-- Quiz Results Fragment -->
+    <fragment
+        android:id="@+id/navigation_quiz"
+        android:name="com.example.LTS_Plus.ui.quiz.QuizFragment"
+        android:label="Quiz Results"
+        tools:layout="@layout/fragment_quiz" />
+
+    <!-- Faculty Fragment -->
+    <fragment
+        android:id="@+id/navigation_faculty"
+        android:name="com.example.LTS_Plus.ui.faculty.FacultyFragment"
+        android:label="Faculty"
+        tools:layout="@layout/fragment_faculty" />
+
+    <!-- Gallery Fragment -->
+    <fragment
+        android:id="@+id/navigation_gallery"
+        android:name="com.example.LTS_Plus.ui.gallery.GalleryFragment"
+        android:label="Gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+</navigation>

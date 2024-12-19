@@ -1,0 +1,222 @@
+<resources>
+    <string name="app_name">LTS Plus</string>
+
+    <string name="start">Start</string>
+    <string name="close">Close</string>
+
+    <string name="principal">
+        "Education is the backbone of a nation. Therefore, acquiring education is a fundamental right for everyone. Through the proper implementation of this right, many countries have reached the pinnacle of development. In this regard, Literacy Tree School is making its utmost effort to achieve its desired goal. We all strive for the well-being of our children to ensure harmonious development in tune with the times. The true purpose of education is to nurture children into becoming skilled, responsible, creative, and independent citizens. To achieve this, a conducive educational environment, competent teachers, and proper methods are essential. At Literacy Tree School, we claim to have achieved these objectives effectively. The school provides Children with computer education, cultural activities, sports, and other programs alongside regular academic learning."
+    </string>
+
+    <string name="about_collage1">
+        "Literacy Tree School is situated in a serene and noise-free environment adorned with greenery. This school began in 2006. The school includes a very good computer lab for children and an ever green playground."
+    </string>
+
+    <string name="about_collage12">
+        "Literacy Tree School, located in a pleasant environment with numerous plants, is open and noise-free.  The school includes a very good computer lab for children and a spacious playground."
+    </string>
+
+    <string name="about_collage">
+        "Literacy Tree School, located in a pleasant environment adorned with greenery. The school includes a very good computer lab for children and a playground."
+    </string>
+
+    <string name="autolink_text">
+        "Name: Godfrey Bwalya\nEmail: godfreyb998@gmail.com\nPhone: +260975755276\nWebsite: https://hackerdevteams.web.app/"
+    </string>
+
+    <string name="share_app_message">LTS Plus Learning App</string>
+
+    <string-array name="theme">
+        <item>System Default</item>
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
+
+    <!-- AdMob Id -->
+    <string name="admob_app_id">ca-app-pub-2374994940786788~8094507279</string>
+    <string name="admob_banner_ad">ca-app-pub-2374994940786788/8843086931</string>
+
+    <string name="about_content">
+        "Version: 1.0\nDeveloped by:- Godfrey Bwalya (AfriCode Hub)"
+    </string>
+
+    <string name="aboutInfo">
+        "My name is Godfrey Bwalya. I am an Android app developer with over 2+ years of experience. Customer satisfaction is my ultimate goal, and I strive to learn something new every day."
+    </string>
+
+    <!-- About Page -->
+    <string name="version_name">Version</string>
+    <string name="version_tag">1.0</string>
+    <string name="company_name_title">Company</string>
+    <string name="company_tag_name">Africode Hub</string>
+    <string name="email_title">Email</string>
+    <string name="email_tag">godfreyb998@gmail.com</string>
+    <string name="website_title">Website</string>
+    <string name="website_tag">https://hackerdevteams.web.app/</string>
+    <string name="contact_title">Contact</string>
+    <string name="contact_tag">+260975755276</string>
+    <string name="privacy_title">Privacy Policy</string>
+    <string name="privacy_tag">Click to read the Privacy Policy</string>
+    <string name="about_title">About</string>
+    <string name="second_how_too">2. Share with LTS Plus</string>
+    <string name="fourth_how_too">4. Open LTS Plus</string>
+    <string name="tag_line">Literacy Tree School</string>
+    <string name="school_name">Literacy Tree School</string>
+
+    <!-- About -->
+    <string name="about">About Us</string>
+    <string name="rate_the_app">Rate the app</string>
+    <string name="love_this_app">
+        "Love this app? Let us know in the Google Play Store how we can make it even better."
+    </string>
+    <string name="share">Share</string>
+    <string name="share_the_app">Share the app with your friends and family</string>
+    <string name="company">Company</string>
+    <string name="email">Email</string>
+    <string name="version">Version</string>
+    <string name="website">Website</string>
+    <string name="contact">Contact</string>
+
+    <!-- Do not change language -->
+    <string name="todo">TODO</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="login">Login</string>
+    <string name="back_to">Back to </string>
+    <string name="email_address">Email</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="literacy_tree_school">Literacy Tree School</string>
+    <string name="send_us_an_email">Send us an email</string>
+    <string name="name_of_school">Name of School</string>
+    <string name="email_address_text">Email address</string>
+    <string name="this_is_the_back">This is the back</string>
+    <string name="image_of_developer">Image of Developer</string>
+    <string name="home">Home</string>
+    <string name="notice">Notice</string>
+    <string name="teacher">Teacher</string>
+    <string name="gallery">Gallery</string>
+    <string name="book">Book</string>
+    <string name="result">Result</string>
+    <string name="admission_form">Admission form</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="developer">Developer</string>
+    <string name="video_lecture">Video lecture</string>
+    <string name="makeni_bonaventure_lusaka">Makeni Bonaventure, Lusaka</string>
+    <string name="_01">01</string>
+    <string name="godfrey_bwalya">Godfrey Bwalya</string>
+    <string name="child_details">Child Details</string>
+    <string name="declaration">Declaration</string>
+    <string name="residential_address">Residential Address</string>
+    <string name="emergency_contact">Emergency Contact</string>
+    <string name="contact_info_admission">Plot No. 401A/9B1\nSt. Bonaventure\nP.O. Box 39225\nMakeni-Lusaka.\nTel: +260 211 272 439\nCall: +260 977/966 845 315</string>
+    <string name="child_s_name">Child\'s Name</string>
+    <string name="school_logo">School Logo</string>
+    <string name="child_s_forename">Child\'s Forename</string>
+    <string name="date_of_birth_yyyy_mm_dd">Date of Birth (YYYY-MM-DD)</string>
+    <string name="place_of_birth">Place of Birth</string>
+    <string name="nationality">Nationality</string>
+    <string name="religion">Religion</string>
+    <string name="father_details">Father Details</string>
+    <string name="father_s_name">Father\'s Name</string>
+    <string name="father_s_contact">Father\'s Contact</string>
+    <string name="mother_details">Mother Details</string>
+    <string name="mother_s_name">Mother\'s Name</string>
+    <string name="mother_s_contact">Mother\'s Contact</string>
+    <string name="emergency_contact_number">Emergency Contact Number</string>
+    <string name="declaration_text">I ......................... hereby agree to pay all tuition fees in good time and that my child should comply with all school regulations. Sign:.......</string>
+    <string name="submit_admission">Submit Admission</string>
+    <string name="write_your_name_here">Write your name here</string>
+    <string name="do_you_want_to_update_your_profile">Do you want to update your profile?</string>
+    <string name="profile">Profile</string>
+    <string name="imagebutton">ImageButton</string>
+    <string name="image">Image</string>
+    <string name="date">Date :</string>
+    <string name="_5_nov_2020">5 Nov 2020 :</string>
+    <string name="time">Time :</string>
+    <string name="_12_00">12 : 00</string>
+    <string name="notice_list">Notice List</string>
+    <string name="download">Download</string>
+    <string name="header">header</string>
+    <string name="by_n_developer_godfrey_bwalya">By Developer:\n Godfrey Bwalya</string>
+    <string name="welcome">Welcome</string>
+    <string name="message_from_the_head_teacher">Message from the Head Teacher</string>
+    <string name="head_teacher_literacy_tree_school">Head Teacher, Literacy Tree School</string>
+    <string name="history_of_the_school">History of the School</string>
+    <string name="division">Subjects Available</string>
+    <string name="science_division">Integrated Science</string>
+    <string name="social_studies">Social Studies</string>
+    <string name="email_godfrey998_gmail_com">Email: godfrey998@gmail.com</string>
+    <string name="developer_godfrey_bwalya">Developer: Godfrey Bwalya</string>
+    <string name="map">Map</string>
+    <string name="phone_260975755276_0760747539">Phone: +260975755276/0760747539</string>
+    <string name="makeni_bonaventure">Makeni-Bonaventure</string>
+    <string name="contact_information">Contact Information</string>
+    <string name="mathematics">Mathematics</string>
+    <string name="english">English</string>
+    <string name="creative_and_technology_studies">Creative And Technology Studies</string>
+    <string name="special_paper_1">Special Paper 1</string>
+    <string name="special_paper_2">Special Paper 2</string>
+    <string name="information_technology">Information Technology</string>
+    <string name="lower_primary">Lower Primary</string>
+    <string name="upper_primary">Upper Primary</string>
+    <string name="others">Others</string>
+    <string name="independence_day">Independence Day</string>
+    <string name="annual_concert">Annual Concert</string>
+    <string name="green_environment">Green environment</string>
+    <string name="join_date">Join Date</string>
+    <string name="_260975755276">+260975755276</string>
+    <string name="start_quiz">Start Quiz</string>
+    <string name="no_data_found">No data found</string>
+    <string name="principal_s_message">Principal\'s Message</string>
+    <string name="grade_3">Grade 3</string>
+    <string name="grade_4">Grade 4</string>
+    <string name="grade_7">Grade 7</string>
+    <string name="grade_6">Grade 6</string>
+    <string name="grade_5">Grade 5</string>
+    <string name="grade_2">Grade 2</string>
+    <string name="grade_1">Grade 1</string>
+    <string name="handwriting">Handwriting</string>
+    <string name="baby_class">Baby Class</string>
+    <string name="students_list">Students List</string>
+    <string name="enter_your_new_name_here">Enter your new name here</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="necessary_section">Nessary Section</string>
+    <string name="question">Question</string>
+    <string name="_5_10">5/10</string>
+    <string name="option">Option</string>
+    <string name="next">Next</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="already_yet_registered">Already yet registered ?</string>
+    <string name="login_here">Login here</string>
+    <string name="clear">Clear</string>
+    <string name="save">Save</string>
+    <string name="save_profile">Save Profile</string>
+    <string name="save_your_profile">Save your profile</string>
+    <string name="your_score">Your Score</string>
+    <string name="score">Score :</string>
+    <string name="total">Total :</string>
+    <string name="connect">Connect</string>
+    <string name="register_form">REGISTER FORM</string>
+    <string name="father_nrc_number">Father NRC Number</string>
+    <string name="father_phone_number">Father Phone Number</string>
+    <string name="submit">Submit</string>
+    <string name="otp">Please enter the received OTP</string>
+    <string name="enter_the_otp_here">Enter the OTP here</string>
+    <string name="did_not_receive_the_otp_change_your_number">Did not receive the OTP? Change your number</string>
+    <string name="verify_the_otp">Verify the OTP</string>
+    <string name="lts_app_will_send_an_otp_to_the_number_you_entered">LTS app will send an OTP to the number you entered</string>
+    <string name="please_enter_your_phone_number">Please enter your phone number</string>
+    <string name="get_otp">GET OTP</string>
+    <string name="logo">Logo</string>
+    <string name="password">Password</string>
+    <string name="not_yet_registered">Not yet registered ?</string>
+    <string name="register_here">Register here</string>
+    <string name="search_here">Search here</string>
+    <string name="about_lts_plus">About LTS_Plus</string>
+    <string name="complaint_letter">Complaint Letter</string>
+    <string name="subject">Subject…</string>
+    <string name="complaint">Complaint…</string>
+    <string name="signature">Signature</string>
+    <string name="image_description_collage">image description collage</string>
+    <string name="image_slider" />
+</resources>
