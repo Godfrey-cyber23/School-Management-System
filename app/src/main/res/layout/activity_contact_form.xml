@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,79 +8,94 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusableInTouchMode="true"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:gravity="center_horizontal">
 
+        <!-- Title Text -->
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/bannder_bg"
             android:gravity="center"
             android:padding="15dp"
             android:paddingBottom="20dp"
             android:text="@string/complaint_letter"
             android:textAllCaps="true"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
 
+        <!-- Name Field -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:maxWidth="488dp"
+            android:layout_gravity="center_horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:hint="@string/subject"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_600" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Email Field -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:maxWidth="488dp"
+            android:layout_gravity="center_horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:hint="@string/email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_600" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Contact Field -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:maxWidth="488dp"
+            android:layout_gravity="center_horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Contact"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:gravity="top"
-                android:hint="@string/complaint" />
+                android:hint="@string/complaint"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_600" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Submit Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:background="@drawable/bannder_bg"
+            android:backgroundTint="@color/red_900"
             android:text="@string/submit"
             android:textAllCaps="false"
-            android:textSize="20sp" />
-
+            android:textColor="@color/white"
+            android:textSize="18sp" />
     </LinearLayout>
-
 </ScrollView>

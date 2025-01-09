@@ -1,25 +1,22 @@
 package com.example.LTS_Plus.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.LTS_Plus.MainActivity;
 import com.example.LTS_Plus.R;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.Objects;
 
 import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText logEmail, logPassword;
-    private String email, password;
     private FirebaseAuth auth;
 
     @Override
@@ -35,54 +32,59 @@ public class LoginActivity extends AppCompatActivity {
         Button loginBtn = findViewById(R.id.loginBtn);
         TextView openForgetPassword = findViewById(R.id.openForgetPassword);
 
-        // Replacing anonymous View.OnClickListener with lambdas
-        openReg.setOnClickListener(view -> openRegister());
+        // Navigate to SignUp activity
+        openReg.setOnClickListener(view -> navigateToSignUp());
+
+        // Validate and login user
         loginBtn.setOnClickListener(view -> validateData());
+
+        // Navigate to ForgetPasswordActivity
         openForgetPassword.setOnClickListener(view ->
                 startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class))
         );
     }
 
     private void validateData() {
-        email = logEmail.getText().toString().trim();
-        password = logPassword.getText().toString().trim();
+        String email = logEmail.getText().toString().trim();
+        String password = logPassword.getText().toString().trim();
 
-        if (email.isEmpty() || password.isEmpty()) {
-            Toasty.error(this, "Please provide all fields", Toasty.LENGTH_SHORT).show();
-        } else {
-            loginUser();
+        if (email.isEmpty()) {
+            Toasty.error(this, "Please enter your email", Toasty.LENGTH_SHORT).show();
+            return;
         }
+
+        if (password.isEmpty()) {
+            Toasty.error(this, "Please enter your password", Toasty.LENGTH_SHORT).show();
+            return;
+        }
+
+        loginUser(email, password);
     }
 
-    private void loginUser() {
+    private void loginUser(String email, String password) {
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        openMain();
+                        // Navigate to MainActivity
+                        navigateToMain();
                     } else {
-                        Toasty.error(
-                                LoginActivity.this,
-                                "Error: " + Objects.requireNonNull(task.getException()).getMessage(),
-                                Toasty.LENGTH_SHORT
-                        ).show();
+                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error";
+                        Toasty.error(this, "Error: " + error, Toasty.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(e ->
-                        Toasty.error(
-                                LoginActivity.this,
-                                "Error: " + e.getMessage(),
-                                Toasty.LENGTH_SHORT
-                        ).show()
-                );
+                        Toasty.error(this, "Error: " + e.getMessage(), Toasty.LENGTH_SHORT).show());
     }
 
-    private void openMain() {
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        finish();
+    private void navigateToMain() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish(); // Close LoginActivity so user cannot go back
     }
 
-    private void openRegister() {
-        startActivity(new Intent(LoginActivity.this, SignUp.class));
-        finish();
+    private void navigateToSignUp() {
+        Intent intent = new Intent(LoginActivity.this, SignUp.class);
+        startActivity(intent);
+        finish(); // Close LoginActivity to avoid going back
     }
 }

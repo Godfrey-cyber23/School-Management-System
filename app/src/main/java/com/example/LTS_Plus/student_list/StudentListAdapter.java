@@ -1,6 +1,7 @@
 package com.example.LTS_Plus.student_list;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,8 @@ import java.util.List;
 
 public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.StudentListViewHolder> {
 
-
-    private  List<StudentListData> list;
-    private  Context context;
+    private final List<StudentListData> list;
+    private final Context context;
 
     public StudentListAdapter(List<StudentListData> list, Context context) {
         this.list = list;
@@ -29,13 +29,12 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
     @NonNull
     @Override
     public StudentListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.stuent_item_layout, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.student_item_layout, parent, false);
         return new StudentListViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull StudentListAdapter.StudentListViewHolder holder, int position) {
-
         StudentListData item = list.get(position);
         holder.name.setText(item.getName());
         holder.phone.setText(item.getPhone());
@@ -43,10 +42,9 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
         try {
             Glide.with(context).load(item.getImage()).placeholder(R.drawable.profile).into(holder.imageView);
-        }catch (Exception e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            Log.e("StudentListAdapter", "Error loading image: " + e.getMessage(), e);
         }
-
     }
 
     @Override
@@ -54,15 +52,30 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         return list.size();
     }
 
-//    public void Filteredlist(ArrayList<StudentListData> filterlist) {
-//        list = filterlist;
-//        notifyDataSetChanged();
-//    }
+    // Use specific methods for list changes instead of notifyDataSetChanged()
 
-    public class StudentListViewHolder extends RecyclerView.ViewHolder {
+    // Update the list with a filtered list
+    public void FilteredList(List<StudentListData> filteredList) {
+        if (filteredList == null || filteredList.isEmpty()) {
+            return;
+        }
 
-        private TextView name, phone, address;
-        private ImageView imageView;
+        // Handle changes to the list more efficiently
+        int oldSize = list.size();
+        list.clear();
+        list.addAll(filteredList);
+
+        if (oldSize > 0) {
+            notifyItemRangeRemoved(0, oldSize);  // Notify that the previous list is removed
+        }
+
+        notifyItemRangeInserted(0, filteredList.size()); // Notify new items are added
+    }
+
+    public static class StudentListViewHolder extends RecyclerView.ViewHolder {
+
+        private final TextView name, phone, address;
+        private final ImageView imageView;
 
         public StudentListViewHolder(@NonNull View itemView) {
             super(itemView);

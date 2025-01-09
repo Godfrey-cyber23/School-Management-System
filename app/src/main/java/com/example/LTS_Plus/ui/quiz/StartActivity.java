@@ -1,8 +1,5 @@
 package com.example.LTS_Plus.ui.quiz;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.LTS_Plus.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,11 +25,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class StartActivity extends AppCompatActivity {
 
     private TextView questionTxt, indicator;
-    private LinearLayout containerrr;
+    private LinearLayout container;
     private Button nextBtn, shareBtn;
     private int score = 0;
     private int position = 0;
@@ -46,7 +47,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         questionTxt = findViewById(R.id.question);
         indicator = findViewById(R.id.indicator);
-        containerrr = findViewById(R.id.containerrr);
+        container = findViewById(R.id.container);
         nextBtn = findViewById(R.id.next_btn);
         shareBtn = findViewById(R.id.share_btn);
 
@@ -58,66 +59,54 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    String question = snapshot.child("question").getValue().toString();
-                    String option1 = snapshot.child("option1").getValue().toString();
-                    String option2 = snapshot.child("option2").getValue().toString();
-                    String option3 = snapshot.child("option3").getValue().toString();
-                    String option4 = snapshot.child("option4").getValue().toString();
-                    String correctAns = snapshot.child("answer").getValue().toString();
+                    String question = Objects.requireNonNull(snapshot.child("question").getValue()).toString();
+                    String option1 = Objects.requireNonNull(snapshot.child("option1").getValue()).toString();
+                    String option2 = Objects.requireNonNull(snapshot.child("option2").getValue()).toString();
+                    String option3 = Objects.requireNonNull(snapshot.child("option3").getValue()).toString();
+                    String option4 = Objects.requireNonNull(snapshot.child("option4").getValue()).toString();
+                    String correctAns = Objects.requireNonNull(snapshot.child("answer").getValue()).toString();
 
                     list.add(new QuestionData(option1,option2,option3,option4,question,correctAns));
 
                 }
 
-                if (list.size() > 0){
+                if (!list.isEmpty()){
                     loadQuestion(questionTxt,0,list.get(position).getQuestion());
 
                     for (int i = 0; i<4; i++){
-                        containerrr.getChildAt(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                checkAnswer((Button)view);
-                            }
-                        });
+                        container.getChildAt(i).setOnClickListener(view -> checkAnswer((Button)view));
                     }
 
-                    nextBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            nextBtn.setEnabled(false);
-                            nextBtn.setAlpha(0.7f);
-                            enabled(true);
-                            position++;
+                    nextBtn.setOnClickListener(v -> {
+                        nextBtn.setEnabled(false);
+                        nextBtn.setAlpha(0.7f);
+                        enabled(true);
+                        position++;
 
-
-                            if (position == list.size()){
-                                Intent intent = new Intent(StartActivity.this, ScoreActivity.class);
-                                intent.putExtra("score",score);
-                                intent.putExtra("total",list.size());
-                                startActivity(intent);
-                                finish();
-                                return;
-                            }
-                            count = 0;
-                            loadQuestion(questionTxt,0,list.get(position).getQuestion());
+                        if (position == list.size()){
+                            Intent intent = new Intent(StartActivity.this, ScoreActivity.class);
+                            intent.putExtra("score",score);
+                            intent.putExtra("total",list.size());
+                            startActivity(intent);
+                            finish();
+                            return;
                         }
+                        count = 0;
+                        loadQuestion(questionTxt,0,list.get(position).getQuestion());
                     });
 
-                    shareBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String body = "*"+list.get(position).getQuestion()+"+"+
-                                    "(a)"+list.get(position).getOption1()+"\n"+
-                                    "(b)"+list.get(position).getOption2()+"\n"+
-                                    "(c)"+list.get(position).getOption3()+"\n"+
-                                    "(d)"+list.get(position).getOption4();
+                    shareBtn.setOnClickListener(v -> {
+                        String body = "*"+list.get(position).getQuestion()+"+"+
+                                "(a)"+list.get(position).getOption1()+"\n"+
+                                "(b)"+list.get(position).getOption2()+"\n"+
+                                "(c)"+list.get(position).getOption3()+"\n"+
+                                "(d)"+list.get(position).getOption4();
 
-                            Intent intent = new Intent(Intent.ACTION_SEND);
-                            intent.setType("Text/Plain");
-                            intent.putExtra(Intent.EXTRA_SUBJECT,"School App");
-                            intent.putExtra(Intent.EXTRA_TEXT,body);
-                            startActivity(Intent.createChooser(intent,"Share Via"));
-                        }
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("Text/Plain");
+                        intent.putExtra(Intent.EXTRA_SUBJECT,"School App");
+                        intent.putExtra(Intent.EXTRA_TEXT,body);
+                        startActivity(Intent.createChooser(intent,"Share Via"));
                     });
 
 
@@ -144,7 +133,7 @@ public class StartActivity extends AppCompatActivity {
             selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#4caf50")));
         }else {
             selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ff0000")));
-            Button correctOption = containerrr.findViewWithTag(list.get(position).getAnswer());
+            Button correctOption = container.findViewWithTag(list.get(position).getAnswer());
             correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#4caf50")));
 
         }
@@ -153,9 +142,9 @@ public class StartActivity extends AppCompatActivity {
     @SuppressLint("NewApi")
     private void enabled(Boolean enable){
         for (int i = 0; i<4; i++){
-            containerrr.getChildAt(i).setEnabled(enable);
+            container.getChildAt(i).setEnabled(enable);
             if (enable){
-                containerrr.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#989898")));
+                container.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#989898")));
             }
         }
     }
@@ -163,13 +152,13 @@ public class StartActivity extends AppCompatActivity {
     @SuppressLint("NewApi")
     private void loadQuestion(View view, int value, String data){
         for (int i = 0; i<4 ; i++){
-            containerrr.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#989898")));
+            container.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#989898")));
         }
         view.animate().alpha(value).scaleY(value).setDuration(500)
                 .setStartDelay(100).setInterpolator(new DecelerateInterpolator())
                 .setListener(new Animator.AnimatorListener() {
                     @Override
-                    public void onAnimationStart(Animator animation) {
+                    public void onAnimationStart(@NonNull Animator animation) {
                         if (value == 0 && count < 4){
                             String option = "";
                             if (count == 0)
@@ -181,32 +170,34 @@ public class StartActivity extends AppCompatActivity {
                             else  if (count == 3)
                                 option = list.get(position).getOption4();
 
-                            loadQuestion(containerrr.getChildAt(count),0,option);
+                            loadQuestion(container.getChildAt(count),0,option);
                             count++;
                         }
                     }
 
                     @Override
-                    public void onAnimationEnd(Animator animation) {
-                        if (value == 0){
+                    public void onAnimationEnd(@NonNull Animator animation) {
+                        if (value == 0) {
                             try {
                                 ((TextView) view).setText(data);
-                                indicator.setText(position + "/" + list.size());
-                            }catch (ClassCastException e){
-                                ((Button)view).setText(data);
+                                // Use string resource with placeholders
+                                indicator.setText(view.getContext().getString(R.string.indicator_text, position, list.size()));
+                            } catch (ClassCastException e) {
+                                ((Button) view).setText(data);
                             }
                             view.setTag(data);
-                            loadQuestion(view,1,data);
+                            loadQuestion(view, 1, data);
                         }
                     }
 
+
                     @Override
-                    public void onAnimationCancel(Animator animation) {
+                    public void onAnimationCancel(@NonNull Animator animation) {
 
                     }
 
                     @Override
-                    public void onAnimationRepeat(Animator animation) {
+                    public void onAnimationRepeat(@NonNull Animator animation) {
 
                     }
                 });

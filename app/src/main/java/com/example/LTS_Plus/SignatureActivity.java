@@ -3,8 +3,9 @@ package com.example.LTS_Plus;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,25 +28,38 @@ public class SignatureActivity extends AppCompatActivity {
         signaturePad = findViewById(R.id.signaturePad);
         Button btnClear = findViewById(R.id.btnClear);
         Button btnSave = findViewById(R.id.btnSave);
+        SeekBar penWidthSeekBar = findViewById(R.id.penWidthSeekBar);
 
-        // Clear SignaturePad
-        btnClear.setOnClickListener(new View.OnClickListener() {
+        // Set a default pen width that works well with fingers
+        signaturePad.setMinWidth(15.0f); // A larger value for finger/thumb input
+
+        // Set up the SeekBar for adjusting pen width
+        penWidthSeekBar.setMax(50); // Max pen width
+        penWidthSeekBar.setProgress(15); // Default pen width
+        penWidthSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onClick(View v) {
-                signaturePad.clear();
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Adjust the pen width dynamically based on the SeekBar value
+                signaturePad.setMinWidth(progress);
             }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
+        // Clear SignaturePad
+        btnClear.setOnClickListener(v -> signaturePad.clear());
+
         // Save Signature
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (signaturePad.isEmpty()) {
-                    Toast.makeText(SignatureActivity.this, "Please sign before saving!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Bitmap signatureBitmap = signaturePad.getSignatureBitmap();
-                    saveSignatureToGallery(signatureBitmap);
-                }
+        btnSave.setOnClickListener(v -> {
+            if (signaturePad.isEmpty()) {
+                Toast.makeText(SignatureActivity.this, "Please sign before saving!", Toast.LENGTH_SHORT).show();
+            } else {
+                Bitmap signatureBitmap = signaturePad.getSignatureBitmap();
+                saveSignatureToGallery(signatureBitmap);
             }
         });
     }
@@ -59,8 +73,7 @@ public class SignatureActivity extends AppCompatActivity {
             Toast.makeText(this, "Signature saved to Gallery!", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Toast.makeText(this, "Unable to save signature.", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
+            Log.e("SignatureSaveError", "Error saving signature to gallery", e);
         }
     }
 }
-

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,94 +13,101 @@
         android:id="@+id/toolbarofupdateprofile"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#0277bd">
+        android:background="#0277bd"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Toolbar Content -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <!-- Back Button -->
-            <ImageButton
-                android:id="@+id/backbuttonofupdateprofile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/image"
-                android:src="@drawable/ic_back" />
-
-            <!-- Title -->
-            <TextView
-                android:id="@+id/myapptext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/backbuttonofupdateprofile"
-                android:layout_marginStart="10dp"
-                android:text="@string/update_profile"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
-
-    <!-- Profile Image -->
+    <!-- User Image Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/getnewuserimage"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        app:cardCornerRadius="65dp">
+        app:cardCornerRadius="65dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarofupdateprofile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#333333">
 
-        <ImageView
-            android:id="@+id/getnewuserimageimageView"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/image"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile2" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/getuserimageimageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#88000000" />
+        </FrameLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Username Input -->
     <EditText
         android:id="@+id/getnewusername"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/getnewuserimage"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints="Username"
-        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:autofillHints="@null"
         android:hint="@string/enter_your_new_name_here"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords"
+        android:textAlignment="center"
+        android:maxWidth="488dp"
+        app:layout_constraintTop_toBottomOf="@id/getnewuserimage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_max="488dp"
+        android:layout_marginTop="16dp" />
 
+    <!-- Update Profile Button -->
     <Button
         android:id="@+id/updateprofilebutton"
-        android:layout_width="182dp"
-        android:layout_height="42dp"
-        android:layout_below="@id/getnewusername"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="123dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="106dp"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
         android:background="@color/titleColorBd"
         android:text="@string/update_profile"
-        android:textColor="@color/white" />
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/getnewusername"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
+    <!-- ProgressBar -->
     <ProgressBar
         android:id="@+id/progressbarofupdateprofile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/updateprofilebutton"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="171dp"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/updateprofilebutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
-</RelativeLayout>
+    <!-- Back Button and Title -->
+    <ImageButton
+        android:id="@+id/backbuttonofupdateprofile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/navigate_back"
+        android:src="@drawable/ic_back"
+        app:layout_constraintTop_toTopOf="@id/toolbarofupdateprofile"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/myapptext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_profile"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/toolbarofupdateprofile"
+        app:layout_constraintStart_toEndOf="@id/backbuttonofupdateprofile"
+        android:layout_marginStart="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,16 @@
 package com.example.LTS_Plus.student_list;
 
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import com.example.LTS_Plus.R;
 import com.google.firebase.database.DataSnapshot;
@@ -18,16 +21,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import es.dmoral.toasty.Toasty;
 
 public class StudentList extends AppCompatActivity {
 
-    private RecyclerView class6, class7, class8, class9, class10;
-    private LinearLayout class6NoData, class7NoData, class8NoData, class9NoData, class10NoData;
-    private List<StudentListData> list, list1, list2, list3, list4;
+    private RecyclerView grade1, grade2, grade3, grade4, grade5, grade6, grade7;
+    private LinearLayout grade1NoData, grade2NoData, grade3NoData, grade4NoData, grade5NoData, grade6NoData, grade7NoData;
+    private List<StudentListData> list, list1, list2, list3, list4, list5, list6;
     private StudentListAdapter adapter;
-    //private EditText searchText;
 
     private DatabaseReference reference, dbRef;
 
@@ -36,230 +39,272 @@ public class StudentList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
 
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Students List");
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Students List");
-        class6 = findViewById(R.id.class6);
-        class7 = findViewById(R.id.class7);
-        class8 = findViewById(R.id.class8);
-        class9 = findViewById(R.id.class9);
-        class10 = findViewById(R.id.class10);
+        grade1 = findViewById(R.id.grade1);
+        grade2 = findViewById(R.id.grade2);
+        grade3 = findViewById(R.id.grade3);
+        grade4 = findViewById(R.id.grade4);
+        grade5 = findViewById(R.id.grade5);
+        grade6 = findViewById(R.id.grade6);
+        grade7 = findViewById(R.id.grade7);
 
-        //searchText = findViewById(R.id.searchText);
+        EditText searchText = findViewById(R.id.searchText);
 
-        class6NoData = findViewById(R.id.class6NoData);
-        class7NoData = findViewById(R.id.class7NoData);
-        class8NoData = findViewById(R.id.class8NoData);
-        class9NoData = findViewById(R.id.class9NoData);
-        class10NoData = findViewById(R.id.class10NoData);
+        grade1NoData = findViewById(R.id.grade1NoData);
+        grade2NoData = findViewById(R.id.grade2NoData);
+        grade3NoData = findViewById(R.id.grade3NoData);
+        grade4NoData = findViewById(R.id.grade4NoData);
+        grade5NoData = findViewById(R.id.grade5NoData);
+        grade6NoData = findViewById(R.id.grade6NoData);
+        grade7NoData = findViewById(R.id.grade7NoData);
+
         reference = FirebaseDatabase.getInstance().getReference().child("student");
 
-        class6();
-        class7();
-        class8();
-        class9();
-        class10();
+        grade1();
+        grade2();
+        grade3();
+        grade4();
+        grade5();
+        grade6();
+        grade7();
 
+        searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
     }
 
-
-    private void class6() {
-        dbRef = reference.child("Class 6");
+    private void grade1() {
+        dbRef = reference.child("Grade 1");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
-                    class6NoData.setVisibility(View.VISIBLE);
-                    class6.setVisibility(View.GONE);
+                    grade1NoData.setVisibility(View.VISIBLE);
+                    grade1.setVisibility(View.GONE);
                 } else {
-
-
-                    class6NoData.setVisibility(View.GONE);
-                    class6.setVisibility(View.VISIBLE);
+                    grade1NoData.setVisibility(View.GONE);
+                    grade1.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         StudentListData data = snapshot.getValue(StudentListData.class);
                         list.add(data);
                     }
-                    class6.setHasFixedSize(true);
-                    class6.setLayoutManager(new LinearLayoutManager(getApplication()));
+                    grade1.setHasFixedSize(true);
+                    grade1.setLayoutManager(new LinearLayoutManager(getApplication()));
                     adapter = new StudentListAdapter(list, getApplication());
-                    class6.setAdapter(adapter);
+                    grade1.setAdapter(adapter);
                 }
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 Toasty.error(getApplicationContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
-
-//        searchText.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//                filter(editable.toString());
-//            }
-//        });
-
     }
 
-//    private void filter(String text) {
-//        ArrayList<StudentListData> filterlist = new ArrayList<>();
-//        for (StudentListData item : list){
-//            if (item.getName().toLowerCase().contains(text.toString())){
-//                filterlist.add(item);
-//            }
-//        }
-//
-//        adapter.Filteredlist(filterlist);
-//    }
-
-    private void class7() {
-        dbRef = reference.child("Class 7");
+    private void grade2() {
+        dbRef = reference.child("Grade 2");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list1 = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
-                    class7NoData.setVisibility(View.VISIBLE);
-                    class7.setVisibility(View.GONE);
+                    grade2NoData.setVisibility(View.VISIBLE);
+                    grade2.setVisibility(View.GONE);
                 } else {
-
-
-                    class7NoData.setVisibility(View.GONE);
-                    class7.setVisibility(View.VISIBLE);
+                    grade2NoData.setVisibility(View.GONE);
+                    grade2.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         StudentListData data = snapshot.getValue(StudentListData.class);
                         list1.add(data);
                     }
-                    class7.setHasFixedSize(true);
-                    class7.setLayoutManager(new LinearLayoutManager(getApplication()));
+                    grade2.setHasFixedSize(true);
+                    grade2.setLayoutManager(new LinearLayoutManager(getApplication()));
                     adapter = new StudentListAdapter(list1, getApplication());
-                    class7.setAdapter(adapter);
+                    grade2.setAdapter(adapter);
                 }
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 Toasty.error(getApplicationContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
-
     }
 
-    private void class8() {
-        dbRef = reference.child("Class 8");
+    private void grade3() {
+        dbRef = reference.child("Grade 3");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list2 = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
-                    class8NoData.setVisibility(View.VISIBLE);
-                    class8.setVisibility(View.GONE);
+                    grade3NoData.setVisibility(View.VISIBLE);
+                    grade3.setVisibility(View.GONE);
                 } else {
-
-
-                    class8NoData.setVisibility(View.GONE);
-                    class8.setVisibility(View.VISIBLE);
+                    grade3NoData.setVisibility(View.GONE);
+                    grade3.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         StudentListData data = snapshot.getValue(StudentListData.class);
                         list2.add(data);
                     }
-                    class8.setHasFixedSize(true);
-                    class8.setLayoutManager(new LinearLayoutManager(getApplication()));
+                    grade3.setHasFixedSize(true);
+                    grade3.setLayoutManager(new LinearLayoutManager(getApplication()));
                     adapter = new StudentListAdapter(list2, getApplication());
-                    class8.setAdapter(adapter);
+                    grade3.setAdapter(adapter);
                 }
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 Toasty.error(getApplicationContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
-
     }
 
-    private void class9() {
-        dbRef = reference.child("Class 9");
+    private void grade4() {
+        dbRef = reference.child("Grade 4");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list3 = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
-                    class9NoData.setVisibility(View.VISIBLE);
-                    class9.setVisibility(View.GONE);
+                    grade4NoData.setVisibility(View.VISIBLE);
+                    grade4.setVisibility(View.GONE);
                 } else {
-                    class9NoData.setVisibility(View.GONE);
-                    class9.setVisibility(View.VISIBLE);
+                    grade4NoData.setVisibility(View.GONE);
+                    grade4.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         StudentListData data = snapshot.getValue(StudentListData.class);
                         list3.add(data);
                     }
-                    class9.setHasFixedSize(true);
-                    class9.setLayoutManager(new LinearLayoutManager(getApplication()));
+                    grade4.setHasFixedSize(true);
+                    grade4.setLayoutManager(new LinearLayoutManager(getApplication()));
                     adapter = new StudentListAdapter(list3, getApplication());
-                    class9.setAdapter(adapter);
+                    grade4.setAdapter(adapter);
                 }
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 Toasty.error(getApplicationContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
-
     }
 
-    private void class10() {
-        dbRef = reference.child("Class 10");
+    private void grade5() {
+        dbRef = reference.child("Grade 5");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list4 = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
-                    class10NoData.setVisibility(View.VISIBLE);
-                    class10.setVisibility(View.GONE);
+                    grade5NoData.setVisibility(View.VISIBLE);
+                    grade5.setVisibility(View.GONE);
                 } else {
-                    class10NoData.setVisibility(View.GONE);
-                    class10.setVisibility(View.VISIBLE);
+                    grade5NoData.setVisibility(View.GONE);
+                    grade5.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         StudentListData data = snapshot.getValue(StudentListData.class);
                         list4.add(data);
                     }
-                    class10.setHasFixedSize(true);
-                    class10.setLayoutManager(new LinearLayoutManager(getApplication()));
+                    grade5.setHasFixedSize(true);
+                    grade5.setLayoutManager(new LinearLayoutManager(getApplication()));
                     adapter = new StudentListAdapter(list4, getApplication());
-                    class10.setAdapter(adapter);
+                    grade5.setAdapter(adapter);
                 }
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 Toasty.error(getApplicationContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
-
     }
 
+    private void grade6() {
+        dbRef = reference.child("Grade 6");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list5 = new ArrayList<>();
+                if (!dataSnapshot.exists()) {
+                    grade6NoData.setVisibility(View.VISIBLE);
+                    grade6.setVisibility(View.GONE);
+                } else {
+                    grade6NoData.setVisibility(View.GONE);
+                    grade6.setVisibility(View.VISIBLE);
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        StudentListData data = snapshot.getValue(StudentListData.class);
+                        list5.add(data);
+                    }
+                    grade6.setHasFixedSize(true);
+                    grade6.setLayoutManager(new LinearLayoutManager(getApplication()));
+                    adapter = new StudentListAdapter(list5, getApplication());
+                    grade6.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toasty.error(getApplicationContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void grade7() {
+        dbRef = reference.child("Grade 7");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list6 = new ArrayList<>();
+                if (!dataSnapshot.exists()) {
+                    grade7NoData.setVisibility(View.VISIBLE);
+                    grade7.setVisibility(View.GONE);
+                } else {
+                    grade7NoData.setVisibility(View.GONE);
+                    grade7.setVisibility(View.VISIBLE);
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        StudentListData data = snapshot.getValue(StudentListData.class);
+                        list6.add(data);
+                    }
+                    grade7.setHasFixedSize(true);
+                    grade7.setLayoutManager(new LinearLayoutManager(getApplication()));
+                    adapter = new StudentListAdapter(list6, getApplication());
+                    grade7.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toasty.error(getApplicationContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
+    private void filter(String text) {
+        ArrayList<StudentListData> filtered_list = new ArrayList<>();
+        for (StudentListData item : list) {
+            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
+                filtered_list.add(item);
+            }
+        }
+        adapter.FilteredList(filtered_list);
+    }
 }

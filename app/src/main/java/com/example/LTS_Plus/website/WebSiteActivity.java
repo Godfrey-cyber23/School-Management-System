@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.LTS_Plus.R;
 
+import java.util.Objects;
+
 public class WebSiteActivity extends AppCompatActivity {
 
     private WebView webView;
@@ -19,12 +21,12 @@ public class WebSiteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_site);
 
 
-//        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
-        webView=(WebView) findViewById(R.id.webViewId);
+        webView= findViewById(R.id.webViewId);
 
         WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptEnabled(false);
 
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("https://www.bing.com/ck/a?!&&p=c7717489bbb23143b86b534354f33c49be5fe6715d79139e409f4ddfc4a7d6beJmltdHM9MTczMzc4ODgwMA&ptn=3&ver=2&hsh=4&fclid=2c23108a-1604-6cb0-0d31-043717046d95&psq=literacy+tree+school+makeni&u=a1aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL0xJVEVSQUNZVFJFRVNDSE9PTC8&ntb=1");

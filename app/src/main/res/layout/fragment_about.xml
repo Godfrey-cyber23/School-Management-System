@@ -37,7 +37,8 @@
             android:layout_marginTop="@dimen/text_margin"
             android:text="@string/about_collage1"
             android:textColor="@color/textHistory"
-            android:textSize="@dimen/text_size" />
+            android:textSize="@dimen/text_size"
+            android:maxWidth="600dp" />
 
         <!-- Optimized TextView with Drawable -->
         <TextView
@@ -49,7 +50,7 @@
             android:textColor="@color/textHistory"
             app:drawableStartCompat="@drawable/ic_label" />
 
-        <androidx.viewpager.widget.ViewPager
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPage"
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -109,12 +110,20 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/map"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="230dp"
-                android:contentDescription="@string/map"
-                android:src="@drawable/map" />
+                android:layout_gravity="center"
+                android:background="@color/grey">
+
+                <ImageView
+                    android:id="@+id/map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="230dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/map"
+                    android:src="@drawable/map" />
+            </FrameLayout>
 
         </LinearLayout>
 

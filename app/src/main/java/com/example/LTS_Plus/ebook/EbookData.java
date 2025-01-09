@@ -1,10 +1,8 @@
 package com.example.LTS_Plus.ebook;
 
 public class EbookData {
-    private String pdfTitle, pdfUrl;
-
-    public EbookData() {
-    }
+    private final String pdfTitle;
+    private final String pdfUrl;
 
     public EbookData(String pdfTitle, String pdfUrl) {
         this.pdfTitle = pdfTitle;
@@ -15,15 +13,8 @@ public class EbookData {
         return pdfTitle;
     }
 
-    public void setPdfTitle(String pdfTitle) {
-        this.pdfTitle = pdfTitle;
-    }
-
     public String getPdfUrl() {
         return pdfUrl;
     }
 
-    public void setPdfUrl(String pdfUrl) {
-        this.pdfUrl = pdfUrl;
-    }
 }

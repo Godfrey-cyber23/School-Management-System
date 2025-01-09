@@ -7,58 +7,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Main layout for all components -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+        <!-- Toolbar included -->
         <include
             android:id="@+id/toolbarId"
             layout="@layout/toolbar_layout"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Main content (NavHostFragment) -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frame_layout"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarId"
+            app:layout_constraintBottom_toTopOf="@+id/navigationBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:navGraph="@navigation/navigation" />
 
+        <!-- Bottom Navigation Bar -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+            android:id="@+id/navigationBar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:background="?android:attr/windowBackground"
-            app:itemIconTint="@color/bottom_navigation_color"
-            app:itemTextColor="@color/card_red"
-            app:labelVisibilityMode="selected"
+            app:itemIconSize="24dp"
+            app:itemIconTint="@color/black"
+            app:itemTextColor="@color/black"
+            app:labelVisibilityMode="auto"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_navation" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:menu="@menu/bottom_navigation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/white"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/drawer_header"
-        app:itemIconSize="25sp"
-        app:itemIconTint="@color/card_red"
+        app:itemIconSize="24dp"
+        app:itemIconTint="@color/black"
         app:itemTextAppearance="?android:attr/textAppearanceMedium"
         app:itemTextColor="@color/black"
-        app:menu="@menu/navigation_drawer"
-        android:layout_marginStart="0dp" />
+        app:menu="@menu/navigation_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

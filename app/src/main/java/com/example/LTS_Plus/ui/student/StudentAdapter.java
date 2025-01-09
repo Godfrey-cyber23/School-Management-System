@@ -1,6 +1,7 @@
-package com.literacytree.LTS_Plus.ui.student;
+package com.example.LTS_Plus.ui.student;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.literacytree.LTS_Plus.R;
+import com.example.LTS_Plus.R;
 
 import java.util.List;
 
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewAdapter> {
-    private List<StudentData> list;
-    private Context context;
+    private final List<StudentData> list;
+    private final Context context;
 
     public StudentAdapter(List<StudentData> list, Context context) {
         this.list = list;
@@ -29,7 +30,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     @NonNull
     @Override
     public StudentAdapter.StudentViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.stuent_item_layout, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.student_item_layout, parent, false);
         return new StudentViewAdapter(view);
     }
 
@@ -42,10 +43,14 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         holder.address.setText(item.getAddress());
 
         try {
-            Glide.with(context).load(item.getImage()).placeholder(R.drawable.profile).into(holder.imageView);
-        }catch (Exception e){
-            e.printStackTrace();
+            Glide.with(context)
+                    .load(item.getImage())
+                    .placeholder(R.drawable.profile)
+                    .into(holder.imageView);
+        } catch (Exception e) {
+            Log.e("ImageLoadingError", "Error loading image: " + e.getMessage(), e);
         }
+
 
     }
 
@@ -56,8 +61,10 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
 
     public static class StudentViewAdapter extends RecyclerView.ViewHolder {
 
-        private TextView name, phone, address;
-        private ImageView imageView;
+        private final TextView name;
+        private final TextView phone;
+        private final TextView address;
+        private final ImageView imageView;
 
         public StudentViewAdapter(@NonNull View itemView) {
             super(itemView);

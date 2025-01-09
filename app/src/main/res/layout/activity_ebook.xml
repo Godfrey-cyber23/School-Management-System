@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,180 +6,30 @@
 
     <EditText
         android:id="@+id/searchText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="4dp"
-        android:autofillHints="Search"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:layout_centerHorizontal="true"
+        android:maxWidth="488dp"
+        android:autofillHints="@null"
         android:background="@drawable/search_background"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="6dp"
         android:hint="@string/search_here"
-        android:inputType="text"
-        android:padding="8dp"
-        android:visibility="gone" />
+        android:inputType="text" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_view_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchText">
 
-        <LinearLayout
-            android:id="@+id/shimmer_layout"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-            <include layout="@layout/literacy_ebook" />
-
-
-        </LinearLayout>
-
-
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp" />
     </com.facebook.shimmer.ShimmerFrameLayout>
-
 
 </RelativeLayout>

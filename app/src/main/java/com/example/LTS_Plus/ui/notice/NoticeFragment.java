@@ -46,7 +46,7 @@ public class NoticeFragment extends Fragment {
 
         reference = FirebaseDatabase.getInstance().getReference().child("Notice");
 
-//        reference.keepSynced(true);
+        reference.keepSynced(true);
 
         deleteNoticeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         deleteNoticeRecyclerView.setHasFixedSize(true);
@@ -78,7 +78,7 @@ public class NoticeFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 progressBar.setVisibility(View.GONE);
 
-                Toasty.error(getContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();            }
+                Toasty.error(requireContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();            }
         });
     }
 

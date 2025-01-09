@@ -19,52 +19,38 @@ import java.util.List;
 
 public class AboutFragment extends Fragment {
 
-    private ViewPager viewPager;
-    private BanchAdapter adapter;
-    private List<BranchModel> list;
-
-    private ImageView map;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about, container, false);
 
-        list = new ArrayList<>();
-        list.add(new BranchModel(R.drawable.ic_computer, "ICT," "ICT started in 2017. Currently, there are 100 students."));
-        list.add(new BranchModel(R.drawable.ic_settings, "Science," "Science started in 1970. Currently, there are 100 students.
+        List<BranchModel> list = new ArrayList<>();
+        list.add(new BranchModel(R.drawable.ic_computer, "IT", "IT started in 2017. Currently, there are 100 students."));
+        list.add(new BranchModel(R.drawable.ic_settings, "Science", "Science started in 1970. Currently, there are 100 students."));
 
-
-
-
-
-
-"));
-
-        adapter = new BanchAdapter(getContext(),list);
-        viewPager = view.findViewById(R.id.viewPage);
-        viewPager.setAdapter(adapter);
+        BranchAdapter adapter = new BranchAdapter(requireContext(), list);
+        ViewPager viewPager = view.findViewById(R.id.viewPage);
+        if (viewPager != null) {
+            viewPager.setAdapter(adapter);
+        }
 
         ImageView imageView = view.findViewById(R.id.collage_image);
+        ImageView map = view.findViewById(R.id.map);
 
-        map = view.findViewById(R.id.map);
-
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (map != null) {
+            map.setOnClickListener(v -> {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("geo:0,0?q=Shyampur High School Joypurhat"));
-                Intent chooser = Intent.createChooser(intent,"Lauch Maps");
+                intent.setData(Uri.parse("geo:0,0?q=Literacy Tree School, Bonaventure"));
+                Intent chooser = Intent.createChooser(intent, getString(R.string.launch_maps));
                 startActivity(chooser);
-            }
-        });
+            });
+        }
 
-        Glide.with(getContext())
+        Glide.with(requireContext())
                 .load("https://firebasestorage.googleapis.com/v0/b/admin-dash-42c58.appspot.com/o/Slid-Show%2Fupdate-school.jpg?alt=media&token=83214c12-a4a3-4061-8254-684739f7fc1f")
                 .into(imageView);
 
-        return  view;
+        return view;
     }
 }

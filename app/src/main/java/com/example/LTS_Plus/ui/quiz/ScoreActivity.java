@@ -1,10 +1,10 @@
 package com.example.LTS_Plus.ui.quiz;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.LTS_Plus.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,9 +15,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class ScoreActivity extends AppCompatActivity {
 
-    private TextView scoreTxt, totalTxt;
     int score, total;
     FirebaseUser user;
     DatabaseReference reference;
@@ -32,8 +33,8 @@ public class ScoreActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference();
 
-        scoreTxt = findViewById(R.id.score);
-        totalTxt = findViewById(R.id.total);
+        TextView scoreTxt = findViewById(R.id.score);
+        TextView totalTxt = findViewById(R.id.total);
 
         scoreTxt.setText(String.valueOf(score));
         totalTxt.setText(String.valueOf(total));
@@ -42,7 +43,7 @@ public class ScoreActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    score += Integer.parseInt(dataSnapshot.getValue().toString());
+                    score += Integer.parseInt(Objects.requireNonNull(dataSnapshot.getValue()).toString());
                 }
                 dataSnapshot.getRef().setValue(score);
 

@@ -40,7 +40,7 @@
                 android:id="@+id/score_user_reslt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="20"
+                android:text="@string/_20"
                 android:textColor="@color/textColor1"
                 android:textSize="22sp" />
 
@@ -51,7 +51,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="02"
+            android:text="@string/_02"
             android:textColor="@color/textColor1"
             android:textSize="22sp" />
     </LinearLayout>

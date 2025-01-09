@@ -1,6 +1,7 @@
 package com.example.LTS_Plus.ui.faculty;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,8 @@ import com.example.LTS_Plus.R;
 import java.util.List;
 
 public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherViewAdapter> {
-    private List<TeacherData> list;
-    private Context context;
+    private final List<TeacherData> list;
+    private final Context context;
 
     public TeacherAdapter(List<TeacherData> list, Context context) {
         this.list = list;
@@ -46,10 +47,14 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
 
 
         try {
-            Glide.with(context).load(item.getImage()).placeholder(R.drawable.profile).into(holder.imageView);
-        }catch (Exception e){
-            e.printStackTrace();
+            Glide.with(context)
+                    .load(item.getImage())
+                    .placeholder(R.drawable.profile)
+                    .into(holder.imageView);
+        } catch (Exception e) {
+            Log.e("ImageLoadError", "Error loading image", e); // Log the exception with more context
         }
+
     }
 
 
@@ -63,10 +68,13 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
         return list.size();
     }
 
-    public class TeacherViewAdapter extends RecyclerView.ViewHolder {
+    public static class TeacherViewAdapter extends RecyclerView.ViewHolder {
 
-        private TextView name, phone, post,jon;
-        private ImageView imageView;
+        private final TextView name;
+        private final TextView phone;
+        private final TextView post;
+        private final TextView jon;
+        private final ImageView imageView;
 
         public TeacherViewAdapter(@NonNull View itemView) {
             super(itemView);

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,14 +36,14 @@
                 android:background="#c1c1c1" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/class1"
+                android:id="@+id/grade1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:visibility="gone" />
 
             <LinearLayout
-                android:id="@+id/class1NoData"
+                android:id="@+id/grade1NoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -74,14 +73,14 @@
                 android:background="#c1c1c1" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/class2"
+                android:id="@+id/grade2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:visibility="gone" />
 
             <LinearLayout
-                android:id="@+id/class2NoData"
+                android:id="@+id/grade2NoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -111,14 +110,14 @@
                 android:background="#c1c1c1" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/class3"
+                android:id="@+id/grade3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:visibility="gone" />
 
             <LinearLayout
-                android:id="@+id/class3NoData"
+                android:id="@+id/grade3NoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -147,14 +146,14 @@
                 android:background="#c1c1c1" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/class4"
+                android:id="@+id/grade4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:visibility="gone" />
 
             <LinearLayout
-                android:id="@+id/class4NoData"
+                android:id="@+id/grade4NoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -183,14 +182,14 @@
                 android:background="#c1c1c1" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/class5"
+                android:id="@+id/grade5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:visibility="gone" />
 
             <LinearLayout
-                android:id="@+id/class5NoData"
+                android:id="@+id/grade5NoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -219,14 +218,14 @@
                 android:background="#c1c1c1" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/class6"
+                android:id="@+id/grade6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:visibility="gone" />
 
             <LinearLayout
-                android:id="@+id/class6NoData"
+                android:id="@+id/grade6NoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

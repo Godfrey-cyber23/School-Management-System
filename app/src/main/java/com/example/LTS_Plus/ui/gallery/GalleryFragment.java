@@ -22,7 +22,7 @@ import java.util.List;
 
 public class GalleryFragment extends Fragment {
 
-    RecyclerView convonRecycler, otherRecycler, indaypendenceRecycler;
+    RecyclerView convonRecycler, otherRecycler, independenceRecycler;
     GalleryAdapter adapter;
 
     DatabaseReference reference;
@@ -36,7 +36,7 @@ public class GalleryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
         convonRecycler = view.findViewById(R.id.convonRecycler);
         otherRecycler = view.findViewById(R.id.otherRecycler);
-        indaypendenceRecycler = view.findViewById(R.id.indaypendenceRecycler);
+        independenceRecycler = view.findViewById(R.id.independenceRecycler);
 
 
         reference = FirebaseDatabase.getInstance().getReference().child("gallery");
@@ -54,7 +54,7 @@ public class GalleryFragment extends Fragment {
     private void getIndepentImage() {
         reference.child("Independence Day").addValueEventListener(new ValueEventListener() {
 
-            List<String> imageList = new ArrayList<>();
+            final List<String> imageList = new ArrayList<>();
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -66,8 +66,8 @@ public class GalleryFragment extends Fragment {
 
                 adapter = new GalleryAdapter(getContext(), imageList);
 
-                indaypendenceRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
-                indaypendenceRecycler.setAdapter(adapter);
+                independenceRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                independenceRecycler.setAdapter(adapter);
 
             }
 
@@ -83,7 +83,7 @@ public class GalleryFragment extends Fragment {
     private void getOtherImage() {
         reference.child("Other Events").addValueEventListener(new ValueEventListener() {
 
-            List<String> imageList = new ArrayList<>();
+            final List<String> imageList = new ArrayList<>();
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -113,7 +113,7 @@ public class GalleryFragment extends Fragment {
 
         reference.child("Convocation").addValueEventListener(new ValueEventListener() {
 
-            List<String> imageList = new ArrayList<>();
+            final List<String> imageList = new ArrayList<>();
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

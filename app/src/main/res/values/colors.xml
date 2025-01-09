@@ -17,6 +17,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="departmentColor">#05487E</color>
+    <color name="gray">#848484</color>
+    <color name="gray_dark">#616161</color>
+    <color name="darkGray">#424242</color>  <!-- Dark gray color -->
+    <color name="darkTextColor">#212121</color>  <!-- Dark color for better contrast -->
+    <color name="textColorPrimary">#212121</color>  <!-- Black text color -->
+    <color name="textColorHint">#757575</color>    <!-- Dark gray hint color -->
+    <color name="darkerRed">#D32F2F</color>  <!-- Darker shade of red -->
 
 
     <color name="searchWhite">#FFFFFF</color>

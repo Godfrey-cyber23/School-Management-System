@@ -2,135 +2,144 @@ package com.example.LTS_Plus.admission;
 
 public class AdmissionData {
 
-    private english, numberdate, dateofbirth,
-            gendarCategory, fathersName, fathernrc, fatherdateofbirth, fahterphone,
-            mothername, mothernrc, motherdateofbirth,
-            divisionCategory, district, upzila, postcode, address,
-            oldschool, oldexam, examyear, board, result, parsents, image, key;
+    private final String childFirstName;
+    private final String childSurname;
+    private final String dateOfBirth;
+    private final String placeOfBirth;
+    private final String nationality;
+    private final String religion;
+    private final String childAge;
+    private final String childsGender;
+    private final String fathersName;
+    private final String fathersContact;
+    private final String mothersName;
+    private final String mothersContact;
+    private final String residentialAddress;
+    private final String emergencyContact;
+    private final String doctorsDetails;
+    private final String doctorContact;
+    private final String dateOfEntry;
+    private final String questionOne;
+    private final String questionTwo;
+    private final String cardUpload;
+    private final String otherInfo;
+    private final String declaration;
 
-
-    public AdmissionData(String english, String numberdate, String dateofbirth, String gendarCategory, String fathersName, String fathernrc, String fatherdateofbirth, String fahterphone, String mothername, String mothernrc, String motherdateofbirth, String divisionCategory, String district, String upzila, String postcode, String address, String oldschool, String oldexam, String examyear, String board, String result, String parsents, String image, String key) {
-        this.english = english;
-        this.numberdate = numberdate;
-        this.dateofbirth = dateofbirth;
-        this.gendarCategory = gendarCategory;
+    public AdmissionData(String childFirstName, String childSurname, String dateOfBirth, String placeOfBirth,
+                         String nationality, String religion, String childAge, String childsGender,
+                         String fathersName, String fathersContact, String mothersName, String mothersContact,
+                         String residentialAddress, String emergencyContact, String doctorsDetails,
+                         String doctorContact, String dateOfEntry, String questionOne, String questionTwo,
+                         String cardUpload, String otherInfo, String declaration) {
+        this.childFirstName = childFirstName;
+        this.childSurname = childSurname;
+        this.dateOfBirth = dateOfBirth;
+        this.placeOfBirth = placeOfBirth;
+        this.nationality = nationality;
+        this.religion = religion;
+        this.childAge = childAge;
+        this.childsGender = childsGender;
         this.fathersName = fathersName;
-        this.fathernrc = fathernrc;
-        this.fatherdateofbirth = fatherdateofbirth;
-        this.fahterphone = fahterphone;
-        this.mothername = mothername;
-        this.mothernrc = mothernrc;
-        this.motherdateofbirth = motherdateofbirth;
-        this.divisionCategory = divisionCategory;
-        this.district = district;
-        this.upzila = upzila;
-        this.postcode = postcode;
-        this.address = address;
-        this.oldschool = oldschool;
-        this.oldexam = oldexam;
-        this.examyear = examyear;
-        this.board = board;
-        this.result = result;
-        this.parsents = parsents;
-        this.image = image;
-        this.key = key;
+        this.fathersContact = fathersContact;
+        this.mothersName = mothersName;
+        this.mothersContact = mothersContact;
+        this.residentialAddress = residentialAddress;
+        this.emergencyContact = emergencyContact;
+        this.doctorsDetails = doctorsDetails;
+        this.doctorContact = doctorContact;
+        this.dateOfEntry = dateOfEntry;
+        this.questionOne = questionOne;
+        this.questionTwo = questionTwo;
+        this.cardUpload = cardUpload;
+        this.otherInfo = otherInfo;
+        this.declaration = declaration;
     }
 
-    public String getEnglish() {
-        return english;
+    public String getChildFirstName() {
+        return childFirstName;
     }
 
-    public String getNumberdate() {
-        return numberdate;
+    public String getChildSurname() {
+        return childSurname;
     }
 
-    public String getDateofbirth() {
-        return dateofbirth;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public String getGendarCategory() {
-        return gendarCategory;
+    public String getPlaceOfBirth() {
+        return placeOfBirth;
     }
 
-    public String getNathersName() {
+    public String getNationality() {
+        return nationality;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public String getChildAge() {
+        return childAge;
+    }
+
+    public String getChildsGender() {
+        return childsGender;
+    }
+
+    public String getFathersName() {
         return fathersName;
     }
 
-    public String getFathernrc() {
-        return fathernrc;
+    public String getFathersContact() {
+        return fathersContact;
     }
 
-    public String getFatherdateofbirth() {
-        return fatherdateofbirth;
+    public String getMothersName() {
+        return mothersName;
     }
 
-    public String getFahterphone() {
-        return fahterphone;
+    public String getMothersContact() {
+        return mothersContact;
     }
 
-    public String getMothername() {
-        return mothername;
+    public String getResidentialAddress() {
+        return residentialAddress;
     }
 
-    public String getMothernrc() {
-        return mothernrc;
+    public String getEmergencyContact() {
+        return emergencyContact;
     }
 
-    public String getMotherdateofbirth() {
-        return motherdateofbirth;
+    public String getDoctorsDetails() {
+        return doctorsDetails;
     }
 
-    public String getDivisionCategory() {
-        return divisionCategory;
+    public String getDoctorContact() {
+        return doctorContact;
     }
 
-    public String getDistrict() {
-        return district;
+    public String getDateOfEntry() {
+        return dateOfEntry;
     }
 
-    public String getUpzila() {
-        return upzila;
+    public String getQuestionOne() {
+        return questionOne;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getQuestionTwo() {
+        return questionTwo;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCardUpload() {
+        return cardUpload;
     }
 
-    public String getOldschool() {
-        return oldschool;
+    public String getOtherInfo() {
+        return otherInfo;
     }
 
-    public String getOldexam() {
-        return oldexam;
-    }
-
-    public String getExamyear() {
-        return examyear;
-    }
-
-    public String getBoard() {
-        return board;
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public String getParsents() {
-        return parsents;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getKey() {
-        return key;
+    public String getDeclaration() {
+        return declaration;
     }
 }
-
-

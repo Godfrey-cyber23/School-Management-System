@@ -2,6 +2,8 @@ package com.example.LTS_Plus.ui.notice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.LTS_Plus.full_image.FullImageView;
 import com.example.LTS_Plus.R;
+import com.example.LTS_Plus.full_image.FullImageView;
 
 import java.util.ArrayList;
 
 public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeViewAdapter> {
 
-    private Context context;
-    private ArrayList<NoticeData> list;
+    private final Context context;
+    private final ArrayList<NoticeData> list;
 
 
     public NoticeAdapter(Context context, ArrayList<NoticeData> list) {
@@ -49,26 +51,20 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
             if (currentItem.getImage() != null)
                 Glide.with(context).load(currentItem.getImage()).into(holder.deleteNoticeImage);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("ErrorLoadingImage", "Exception occurred while loading image: " + e.getMessage(), e);
         }
 
-        holder.deleteNoticeImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, FullImageView.class);
-                intent.putExtra("image",currentItem.getImage());
-                context.startActivity(intent);
-            }
+        holder.deleteNoticeImage.setOnClickListener(v -> {
+            Intent intent = new Intent(context, FullImageView.class);
+            intent.putExtra("image",currentItem.getImage());
+            context.startActivity(intent);
         });
 
-//        holder.ebookDownload.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.setData(Uri.parse(list.get(position).getImage()));
-//                context.startActivity(intent);
-//            }
-//        });
+        holder.ebookDownload.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(list.get(position).getImage()));
+           context.startActivity(intent);
+        });
 
     }
 
@@ -77,10 +73,13 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
         return list.size();
     }
 
-    public class NoticeViewAdapter extends RecyclerView.ViewHolder {
+    public static class NoticeViewAdapter extends RecyclerView.ViewHolder {
 
-        private TextView deleteNoticeTitle, date, time;
-        private ImageView deleteNoticeImage,ebookDownload;
+        private final TextView deleteNoticeTitle;
+        private final TextView date;
+        private final TextView time;
+        private final ImageView deleteNoticeImage;
+        private final ImageView ebookDownload;
 
 
         public NoticeViewAdapter(@NonNull View itemView) {
@@ -91,7 +90,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
             time = itemView.findViewById(R.id.time);
 
 
-//            ebookDownload = itemView.findViewById(R.id.ebookDownload);
+            this.ebookDownload = itemView.findViewById(R.id.ebookDownload);
         }
     }
 }

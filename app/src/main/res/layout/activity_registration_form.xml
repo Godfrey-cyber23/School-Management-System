@@ -15,7 +15,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
@@ -38,8 +38,8 @@
                     android:layout_height="wrap_content"
                     android:background="@color/deepPurple"
                     android:gravity="center"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <ImageView
                         android:layout_width="64dp"
@@ -63,7 +63,6 @@
                         android:textColor="#fff"
                         android:textSize="22sp"
                         tools:ignore="TextViewEdits" />
-
                 </LinearLayout>
 
                 <ImageView
@@ -77,6 +76,7 @@
                     android:rotation="45"
                     android:src="@drawable/square" />
 
+                <!-- Child Name -->
                 <RelativeLayout
                     android:id="@+id/relativeLayout2"
                     android:layout_width="match_parent"
@@ -98,21 +98,19 @@
 
                     <EditText
                         android:id="@+id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/imageView_user_icon"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@id/imageView_user_icon"
+                        android:layout_width="488dp"
+                        android:layout_height="48dp"
+                        android:layout_centerHorizontal="true"
                         android:autofillHints="FullName"
                         android:background="@color/transparent"
-                        android:hint="@string/child_s_name"
+                        android:hint="@string/childs_fullname"
                         android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="20dp"
+                        android:gravity="center"
                         android:textSize="15sp" />
 
                 </RelativeLayout>
 
+                <!-- Father's Name -->
                 <RelativeLayout
                     android:id="@+id/relativeLayout3"
                     android:layout_width="match_parent"
@@ -134,24 +132,21 @@
 
                     <EditText
                         android:id="@+id/fathersName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/imageView_user_email"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@id/imageView_user_email"
+                        android:layout_width="488dp"
+                        android:layout_height="48dp"
+                        android:layout_centerHorizontal="true"
                         android:background="@color/transparent"
                         android:hint="@string/father_s_name"
                         android:imeOptions="actionNext"
                         android:importantForAutofill="no"
                         android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="20dp"
+                        android:gravity="center"
                         android:textSize="15sp" />
                 </RelativeLayout>
 
-
+                <!-- Father's Contact -->
                 <RelativeLayout
-                    android:id="@+id/relativeLayout4"
+                    android:id="@+id/relativeLayout5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/relativeLayout3"
@@ -160,44 +155,7 @@
                     android:layout_marginRight="30dp">
 
                     <ImageView
-                        android:id="@+id/imageView_user_pass"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@color/deepPurple"
-                        android:contentDescription="@string/todo"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_id_Card"
-                        app:tint="#fff" />
-
-                    <EditText
-                        android:id="@+id/fatherNid"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/imageView_user_pass"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@id/imageView_user_pass"
-                        android:background="@color/transparent"
-                        android:hint="@string/father_nrc_number"
-                        android:imeOptions="actionNext"
-                        android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="20dp"
-                        android:textSize="15sp" />
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:id="@+id/relativeLayout5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/relativeLayout4"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="30dp">
-
-                    <ImageView
-                        android:id="@+id/imageView_user_repass"
+                        android:id="@+id/imageView_fathers_contact"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@color/deepPurple"
@@ -208,22 +166,19 @@
 
                     <EditText
                         android:id="@+id/fathersContact"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/imageView_user_repass"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@id/imageView_user_repass"
+                        android:layout_width="488dp"
+                        android:layout_height="48dp"
+                        android:layout_centerHorizontal="true"
                         android:background="@color/transparent"
                         android:hint="@string/father_phone_number"
                         android:imeOptions="actionNext"
                         android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="20dp"
+                        android:inputType="phone"
+                        android:gravity="center"
                         android:textSize="15sp" />
                 </RelativeLayout>
 
-
+                <!-- Mother's Name -->
                 <RelativeLayout
                     android:id="@+id/relativeLayout6"
                     android:layout_width="match_parent"
@@ -245,41 +200,68 @@
 
                     <EditText
                         android:id="@+id/mothersName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/imageView_user_mName"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@id/imageView_user_mName"
+                        android:layout_width="488dp"
+                        android:layout_height="48dp"
+                        android:layout_centerHorizontal="true"
                         android:background="@color/transparent"
                         android:hint="@string/mother_s_name"
                         android:imeOptions="actionDone"
                         android:importantForAutofill="no"
                         android:inputType="text"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="20dp"
+                        android:gravity="center"
                         android:textSize="15sp" />
+
                 </RelativeLayout>
 
-
-                <Button
-                    android:id="@+id/button1"
+                <!-- Mother's Contact -->
+                <RelativeLayout
+                    android:id="@+id/relativeLayout7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/relativeLayout6"
                     android:layout_marginLeft="30dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@color/green_700"
-                    android:fontFamily="sans-serif"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp">
 
+                    <ImageView
+                        android:id="@+id/imageView_user_mContact"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/deepPurple"
+                        android:contentDescription="@string/todo"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_phone"
+                        app:tint="#fff" />
+
+                    <EditText
+                        android:id="@+id/mothersContact"
+                        android:layout_width="488dp"
+                        android:layout_height="48dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@color/transparent"
+                        android:hint="@string/mother_s_contact"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="no"
+                        android:inputType="phone"
+                       android:gravity="center"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+                <!-- Submit Button -->
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="320dp"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/relativeLayout7"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/green_800"
+                    android:fontFamily="sans-serif"
                     android:text="@string/submit"
                     android:textColor="#fff" />
-
 
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
-
     </RelativeLayout>
-
 </ScrollView>

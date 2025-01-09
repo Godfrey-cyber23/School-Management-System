@@ -1,18 +1,18 @@
 package com.example.LTS_Plus.ui.faculty;
 
 public class TeacherData {
-    private String name, jon, phone, post, image, key;
+    private String name;
+    private final String jon;
+    private String phone;
+    private final String post;
+    private String image;
 
-    public TeacherData() {
-    }
-
-    public TeacherData(String name, String jon, String phone, String post, String image, String key) {
+    public TeacherData(String name, String jon, String phone, String post, String image) {
         this.name = name;
         this.jon = jon;
         this.phone = phone;
         this.post = post;
         this.image = image;
-        this.key = key;
     }
 
     public String getName() {
@@ -27,10 +27,6 @@ public class TeacherData {
         return jon;
     }
 
-    public void setJon(String jon) {
-        this.jon = jon;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -43,10 +39,6 @@ public class TeacherData {
         return post;
     }
 
-    public void setPost(String post) {
-        this.post = post;
-    }
-
     public String getImage() {
         return image;
     }
@@ -55,11 +47,4 @@ public class TeacherData {
         this.image = image;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
 }

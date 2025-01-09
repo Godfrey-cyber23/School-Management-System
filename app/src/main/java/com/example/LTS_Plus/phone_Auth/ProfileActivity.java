@@ -1,19 +1,16 @@
 package com.example.LTS_Plus.phone_Auth;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.LTS_Plus.R;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +21,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 import es.dmoral.toasty.Toasty;
 
@@ -41,8 +40,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     StorageReference storageReference;
 
-    private String ImageURIacessToken;
-
     androidx.appcompat.widget.Toolbar mtoolbarofviewprofile;
     ImageButton mbackbuttonviewprofile;
 
@@ -54,7 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
 
         mviewusername = findViewById(R.id.viewusername);
@@ -71,21 +68,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         setSupportActionBar(mtoolbarofviewprofile);
 
-        mbackbuttonviewprofile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        mbackbuttonviewprofile.setOnClickListener(v -> finish());
 
         storageReference = firebaseStorage.getReference();
-        storageReference.child("Images").child(firebaseAuth.getUid()).child("Profile Photo").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                ImageURIacessToken = uri.toString();
-                Picasso.get().load(uri).into(mviewuserimageimageView);
-            }
-        });
+        storageReference.child("Images").child(Objects.requireNonNull(firebaseAuth.getUid())).child("Profile Photo").getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(mviewuserimageimageView));
 
 
         DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
@@ -93,6 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserProfile muserprofile = snapshot.getValue(UserProfile.class);
+                assert muserprofile != null;
                 mviewusername.setText(muserprofile.getUsername());
             }
 
@@ -104,13 +91,10 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        mmovetoupdatprofile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, UpdateProfile.class);
-                intent.putExtra("nameofuser",mviewusername.getText().toString());
-                startActivity(intent);
-            }
+        mmovetoupdatprofile.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, UpdateProfile.class);
+            intent.putExtra("username",mviewusername.getText().toString());
+            startActivity(intent);
         });
 
     }

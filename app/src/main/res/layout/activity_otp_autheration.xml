@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -62,25 +61,23 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15sp"
         android:text="@string/did_not_receive_the_otp_change_your_number"
-        android:textColor="@color/titleColorBd"
-        android:textSize="17sp">
-
-    </TextView>
+        android:textColor="#D32F2F"
+        android:textSize="17sp" />
 
     <android.widget.Button
         android:id="@+id/verifyOtp"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_below="@id/changeNumber"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:background="@color/titleColorBd"
+        android:background="#C62828"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="@string/verify_the_otp"
-        android:textColor="@color/white">
-
-    </android.widget.Button>
+        android:textColor="#FFFFFF" />
 
 
     <ProgressBar

@@ -1,18 +1,16 @@
 package com.example.LTS_Plus.ui.student;
 
 public class StudentData {
-    private String name, phone, address,  image, key;
+    private String name;
+    private String phone;
+    private final String address;
+    private String image;
 
-    public StudentData(){
-
-    }
-
-    public StudentData(String name, String phone, String address, String image, String key) {
+    public StudentData(String name, String phone, String address, String image) {
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.image = image;
-        this.key = key;
     }
 
     public String getName() {
@@ -35,10 +33,6 @@ public class StudentData {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getImage() {
         return image;
     }
@@ -47,11 +41,4 @@ public class StudentData {
         this.image = image;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
 }

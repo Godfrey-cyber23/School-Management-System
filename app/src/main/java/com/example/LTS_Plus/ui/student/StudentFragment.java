@@ -1,17 +1,13 @@
 package com.example.LTS_Plus.ui.student;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,9 +25,9 @@ import es.dmoral.toasty.Toasty;
 
 public class StudentFragment extends Fragment {
 
-    private RecyclerView class6, class7, class8, class9, class10;
-    private LinearLayout class6NoData, class7NoData, class8NoData, class9NoData, class10NoData;
-    private List<StudentData> list, list1, list2, list3, list4;
+    private RecyclerView grade1, grade2, grade3, grade4, grade5,grade6,grade7;
+    private LinearLayout grade1NoData, grade2NoData, grade3NoData, grade4NoData, grade5NoData,grade6NoData,grade7NoData;
+    private List<StudentData> list, list1, list2, list3, list4, list5,list6;
     private StudentAdapter adapter;
 
     private DatabaseReference reference, dbRef;
@@ -44,55 +40,60 @@ public class StudentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_student, container, false);
 
 
-        class6 = view.findViewById(R.id.class6);
-        class7 = view.findViewById(R.id.class7);
-        class8 = view.findViewById(R.id.class8);
-        class9 = view.findViewById(R.id.class9);
-        class10 = view.findViewById(R.id.class10);
+        grade1 = view.findViewById(R.id.grade1);
+        grade2 = view.findViewById(R.id.grade2);
+        grade3 = view.findViewById(R.id.grade3);
+        grade4 = view.findViewById(R.id.grade4);
+        grade5  = view.findViewById(R.id.grade5);
+        grade6 = view.findViewById(R.id.grade6);
+        grade7 = view.findViewById(R.id.grade7);
 
-        class6NoData = view.findViewById(R.id.class6NoData);
-        class7NoData = view.findViewById(R.id.class7NoData);
-        class8NoData = view.findViewById(R.id.class8NoData);
-        class9NoData = view.findViewById(R.id.class9NoData);
-        class10NoData = view.findViewById(R.id.class10NoData);
+        grade1NoData = view.findViewById(R.id.grade1NoData);
+        grade2NoData = view.findViewById(R.id.grade2NoData);
+        grade3NoData = view.findViewById(R.id.grade3NoData);
+        grade4NoData = view.findViewById(R.id.grade4NoData);
+        grade5NoData = view.findViewById(R.id.grade5NoData);
+        grade6NoData = view.findViewById(R.id.grade6NoData);
+        grade7NoData = view.findViewById(R.id.grade7NoData);
         reference = FirebaseDatabase.getInstance().getReference().child("student");
 
-//        reference.keepSynced(true);
+        reference.keepSynced(true);
 
-        class6();
-        class7();
-        class8();
-        class9();
-        class10();
+        grade1();
+        grade2();
+        grade3();
+        grade4();
+        grade5();
+        grade6();
+        grade7();
 
         return view;
     }
 
 
 
-
-    private void class6() {
-        dbRef = reference.child("Class 6");
+    private void grade1() {
+        dbRef = reference.child("Grade 1");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list = new ArrayList<>();
                 if (!dataSnapshot.exists()){
-                    class6NoData.setVisibility(View.VISIBLE);
-                    class6.setVisibility(View.GONE);
+                    grade1NoData.setVisibility(View.VISIBLE);
+                    grade1.setVisibility(View.GONE);
                 }else {
 
 
-                    class6NoData.setVisibility(View.GONE);
-                    class6.setVisibility(View.VISIBLE);
+                    grade1NoData.setVisibility(View.GONE);
+                    grade1.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                         StudentData data = snapshot.getValue(StudentData.class);
                         list.add(data);
                     }
-                    class6.setHasFixedSize(true);
-                    class6.setLayoutManager(new LinearLayoutManager(getContext()));
+                    grade1.setHasFixedSize(true);
+                    grade1.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new StudentAdapter(list, getContext());
-                    class6.setAdapter(adapter);
+                    grade1.setAdapter(adapter);
                 }
 
             }
@@ -100,34 +101,34 @@ public class StudentFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Toasty.error(getContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
+                Toasty.error(requireContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void class7() {
-        dbRef = reference.child("Class 7");
+    private void grade2() {
+        dbRef = reference.child("Grade 2");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list1 = new ArrayList<>();
                 if (!dataSnapshot.exists()){
-                    class7NoData.setVisibility(View.VISIBLE);
-                    class7.setVisibility(View.GONE);
+                    grade2NoData.setVisibility(View.VISIBLE);
+                    grade2.setVisibility(View.GONE);
                 }else {
 
 
-                    class7NoData.setVisibility(View.GONE);
-                    class7.setVisibility(View.VISIBLE);
+                    grade2NoData.setVisibility(View.GONE);
+                    grade2.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                         StudentData data = snapshot.getValue(StudentData.class);
                         list1.add(data);
                     }
-                    class7.setHasFixedSize(true);
-                    class7.setLayoutManager(new LinearLayoutManager(getContext()));
+                    grade2.setHasFixedSize(true);
+                    grade2.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new StudentAdapter(list1, getContext());
-                    class7.setAdapter(adapter);
+                    grade2.setAdapter(adapter);
                 }
 
             }
@@ -135,34 +136,34 @@ public class StudentFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Toasty.error(getContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
+                Toasty.error(requireContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void class8() {
-        dbRef = reference.child("Class 8");
+    private void grade3() {
+        dbRef = reference.child("Grade 3");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list2 = new ArrayList<>();
                 if (!dataSnapshot.exists()){
-                    class8NoData.setVisibility(View.VISIBLE);
-                    class8.setVisibility(View.GONE);
+                    grade3NoData.setVisibility(View.VISIBLE);
+                    grade3.setVisibility(View.GONE);
                 }else {
 
 
-                    class8NoData.setVisibility(View.GONE);
-                    class8.setVisibility(View.VISIBLE);
+                    grade3NoData.setVisibility(View.GONE);
+                    grade3.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                         StudentData data = snapshot.getValue(StudentData.class);
                         list2.add(data);
                     }
-                    class8.setHasFixedSize(true);
-                    class8.setLayoutManager(new LinearLayoutManager(getContext()));
+                    grade3.setHasFixedSize(true);
+                    grade3.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new StudentAdapter(list2, getContext());
-                    class8.setAdapter(adapter);
+                    grade3.setAdapter(adapter);
                 }
 
             }
@@ -170,32 +171,32 @@ public class StudentFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Toasty.error(getContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
+                Toasty.error(requireContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void class9() {
-        dbRef = reference.child("Class 9");
+    private void grade4() {
+        dbRef = reference.child("Grade 4");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list3 = new ArrayList<>();
                 if (!dataSnapshot.exists()){
-                    class9NoData.setVisibility(View.VISIBLE);
-                    class9.setVisibility(View.GONE);
+                    grade4NoData.setVisibility(View.VISIBLE);
+                    grade4.setVisibility(View.GONE);
                 }else {
-                    class9NoData.setVisibility(View.GONE);
-                    class9.setVisibility(View.VISIBLE);
+                    grade4NoData.setVisibility(View.GONE);
+                    grade4.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                         StudentData data = snapshot.getValue(StudentData.class);
                         list3.add(data);
                     }
-                    class9.setHasFixedSize(true);
-                    class9.setLayoutManager(new LinearLayoutManager(getContext()));
+                    grade4.setHasFixedSize(true);
+                    grade4.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new StudentAdapter(list3, getContext());
-                    class9.setAdapter(adapter);
+                    grade4.setAdapter(adapter);
                 }
 
             }
@@ -203,32 +204,32 @@ public class StudentFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Toasty.error(getContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
+                Toasty.error(requireContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void class10() {
-        dbRef = reference.child("Class 10");
+    private void grade5() {
+        dbRef = reference.child("Grade 5");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list4 = new ArrayList<>();
                 if (!dataSnapshot.exists()){
-                    class10NoData.setVisibility(View.VISIBLE);
-                    class10.setVisibility(View.GONE);
+                    grade5NoData.setVisibility(View.VISIBLE);
+                    grade5.setVisibility(View.GONE);
                 }else {
-                    class10NoData.setVisibility(View.GONE);
-                    class10.setVisibility(View.VISIBLE);
+                    grade5NoData.setVisibility(View.GONE);
+                    grade5.setVisibility(View.VISIBLE);
                     for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                         StudentData data = snapshot.getValue(StudentData.class);
                         list4.add(data);
                     }
-                    class10.setHasFixedSize(true);
-                    class10.setLayoutManager(new LinearLayoutManager(getContext()));
+                    grade5.setHasFixedSize(true);
+                    grade5.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new StudentAdapter(list4, getContext());
-                    class10.setAdapter(adapter);
+                    grade5.setAdapter(adapter);
                 }
 
             }
@@ -236,11 +237,74 @@ public class StudentFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Toasty.error(getContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
+                Toasty.error(requireContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
             }
         });
 
     }
 
+    private void grade6() {
+        dbRef = reference.child("Grade 6");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list5 = new ArrayList<>();
+                if (!dataSnapshot.exists()) {
+                    grade6NoData.setVisibility(View.VISIBLE);
+                    grade6.setVisibility(View.GONE);
+                } else {
+                    grade6NoData.setVisibility(View.GONE);
+                    grade6.setVisibility(View.VISIBLE);
 
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        StudentData data = snapshot.getValue(StudentData.class);
+                        list5.add(data);
+                    }
+
+                    // Set up the RecyclerView with the correct adapter and layout manager
+                    grade6.setHasFixedSize(true);
+                    grade6.setLayoutManager(new LinearLayoutManager(requireContext())); // Set the LayoutManager
+                    grade6.setAdapter(new StudentAdapter(list5, requireContext())); // Set the adapter for RecyclerView
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toasty.error(requireContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void grade7() {
+        dbRef = reference.child("Grade 7");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list6 = new ArrayList<>();
+                if (!dataSnapshot.exists()) {
+                    grade7NoData.setVisibility(View.VISIBLE);
+                    grade7.setVisibility(View.GONE);
+                } else {
+                    grade7NoData.setVisibility(View.GONE);
+                    grade7.setVisibility(View.VISIBLE);
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        StudentData data = snapshot.getValue(StudentData.class);
+                        list6.add(data);
+                    }
+
+                    // Set up the RecyclerView with the correct adapter and layout manager
+                    grade7.setHasFixedSize(true);
+                    grade7.setLayoutManager(new LinearLayoutManager(requireContext())); // Set the LayoutManager
+                    grade7.setAdapter(new StudentAdapter(list6, requireContext())); // Set the adapter for RecyclerView
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toasty.error(requireContext(), databaseError.getMessage(), Toasty.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
+

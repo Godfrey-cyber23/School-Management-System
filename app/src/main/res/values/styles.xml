@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Light Theme -->
+    <style name="AppTheme_Light" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/light_green_700</item>
+        <item name="colorPrimaryDark">@color/light_green_700</item>
+        <item name="colorAccent">@color/light_green_700</item>
+        <item name="postSplashScreenTheme">@style/AppTheme_Light</item>
+    </style>
+
+    <style name="TextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+    </style>
+
+    <!-- Dark Theme -->
+    <style name="AppTheme_Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="postSplashScreenTheme">@style/AppTheme_Dark</item>
+    </style>
+
+    <!-- Splash Screen Theme -->
+    <style name="SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize the splash screen (e.g., background color, image) -->
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
+        <item name="android:windowAnimationStyle">@style/SplashScreenAnimation</item>
+        <item name="postSplashScreenTheme">@style/AppTheme_Light</item>
+    </style>
+
+    <!-- Splash Screen Animation -->
+    <style name="SplashScreenAnimation">
+        <item name="android:activityOpenEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:activityOpenExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+
+</resources>

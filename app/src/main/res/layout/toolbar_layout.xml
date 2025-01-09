@@ -1,32 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/red">
+    android:layout_margin="5dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
 
+    <!-- Student Image (set fixed size for better fitting) -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/studentImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/profile"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- Student Name (no truncation, will wrap if necessary) -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/schoolLogo"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/school_logo"
-            android:src="@drawable/school_logo" />
-
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/studentName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:text="@string/godfrey_bwalya"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:paddingStart="12sp"
+            android:paddingEnd="12sp" />
+
+        <TextView
+            android:id="@+id/studentPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/_01"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:paddingStart="12sp"
+            android:paddingEnd="12sp" />
+
+        <TextView
+            android:id="@+id/studentAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/makeni_bonaventure_lusaka"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:paddingStart="12sp"
+            android:paddingEnd="12sp" />
 
     </LinearLayout>
 
-</androidx.appcompat.widget.Toolbar>
+</LinearLayout>

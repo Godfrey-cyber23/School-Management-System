@@ -1,7 +1,9 @@
 package com.example.LTS_Plus.ebook;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -9,96 +11,106 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.LTS_Plus.R;
 import com.github.barteksc.pdfviewer.PDFView;
-import com.krishna.fileloader.FileLoader;
-import com.krishna.fileloader.listener.FileRequestListener;
-import com.krishna.fileloader.pojo.FileResponse;
-import com.krishna.fileloader.request.FileLoadRequest;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class PdfViewerActivity extends AppCompatActivity {
 
-   private String url;
-   private PDFView pdfView;
-   private ProgressBar progressBar;
+    private PDFView pdfView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf_viewer);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        getSupportActionBar().hide();
 
-        url = getIntent().getStringExtra("pdfUrl");
+        // Fullscreen and ActionBar setup
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+        // Get the PDF URL
+        String url = getIntent().getStringExtra("pdfUrl");
 
         pdfView = findViewById(R.id.pdfView);
-        
-        //start progressBar
         progressBar = findViewById(R.id.pdfProgress);
-        
-        loadFile(url);
-        
-        
 
-//        new PdfDownload().execute(url);
-//    }
+        // Show progress bar while loading
+        progressBar.setVisibility(View.VISIBLE);
 
-//    private class PdfDownload extends AsyncTask<String, Void, InputStream>{
-//
-//        @Override
-//        protected InputStream doInBackground(String... strings) {
-//            InputStream inputStream = null;
-//
-//            try {
-//                URL url = new URL(strings[0]);
-//                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-//
-//                if (urlConnection.getResponseCode() == 200){
-//                    inputStream = new BufferedInputStream(urlConnection.getInputStream());
-//                }
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            return inputStream;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(InputStream inputStream) {
-//            pdfView.fromStream(inputStream).load();
-//        }
-//    }
+        if (url != null) {
+            // Check if file is cached
+            File cachedFile = getCachedFile(url);
 
+            if (cachedFile.exists()) {
+                loadPdfFromFile(cachedFile);
+            } else {
+                downloadAndLoadPdf(url, cachedFile);
+            }
+        } else {
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(this, "Invalid PDF URL", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void loadFile(String url) {
+    private File getCachedFile(String url) {
+        String fileName = url.substring(url.lastIndexOf('/') + 1);
+        return new File(getCacheDir(), fileName);
+    }
 
-        FileLoader.with(this)
-                .load(url)
-                .fromDirectory("test4", FileLoader.DIR_INTERNAL)
-                .asFile(new FileRequestListener<File>() {
-                    @Override
-                    public void onLoad(FileLoadRequest request, FileResponse<File> response) {
-                        File loadedFile = response.getBody();
-                        progressBar.setVisibility(View.GONE);
-                        pdfView.fromFile(loadedFile)
-                                .password(null)
-                                .defaultPage(0)
-                                .enableSwipe(true)
-                                .swipeHorizontal(false)
-                                .enableDoubletap(true)
-                                .spacing(5)
-                                .load();
+    private void loadPdfFromFile(File file) {
+        progressBar.setVisibility(View.GONE);
+        pdfView.fromFile(file)
+                .password(null)
+                .defaultPage(0)
+                .enableSwipe(true)
+                .swipeVertical(false)
+                .enableDoubletap(true)
+                .load();
+    }
+
+    private void downloadAndLoadPdf(String url, File outputFile) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            try {
+                URL pdfUrl = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) pdfUrl.openConnection();
+                connection.connect();
+
+                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    InputStream inputStream = new BufferedInputStream(connection.getInputStream());
+                    try (FileOutputStream outputStream = new FileOutputStream(outputFile)) {
+                        byte[] buffer = new byte[1024];
+                        int bytesRead;
+                        while ((bytesRead = inputStream.read(buffer)) != -1) {
+                            outputStream.write(buffer, 0, bytesRead);
+                        }
                     }
+                    runOnUiThread(() -> loadPdfFromFile(outputFile));
+                } else {
+                    handleDownloadError("Failed to connect to the server");
+                }
+            } catch (Exception e) {
+                handleDownloadError(e.getMessage());
+                Log.e("PdfViewerActivity", "Error downloading PDF", e);
+            }
+        });
+    }
 
-                    @Override
-                    public void onError(FileLoadRequest request, Throwable t) {
-                        Toast.makeText(PdfViewerActivity.this, "Error"+ t.getMessage(),Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
-                    }
-                });
-
+    private void handleDownloadError(String message) {
+        runOnUiThread(() -> {
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(PdfViewerActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+        });
     }
 }

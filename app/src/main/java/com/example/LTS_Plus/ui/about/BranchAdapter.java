@@ -14,23 +14,23 @@ import com.example.LTS_Plus.R;
 
 import java.util.List;
 
-public class BanchAdapter extends PagerAdapter {
+public class BranchAdapter extends PagerAdapter {
 
     private Context context;
     private List<BranchModel> list;
 
-    public BanchAdapter(Context context, List<BranchModel> list) {
+    public BranchAdapter(Context context, List<BranchModel> list) {
         this.context = context;
         this.list = list;
     }
 
-    public BanchAdapter() {
+    public BranchAdapter() {
     }
 
 
     @Override
     public int getCount() {
-        return list.size();
+        return (list != null) ? list.size() : 0;
     }
 
     @Override
@@ -68,4 +68,5 @@ public class BanchAdapter extends PagerAdapter {
         container.removeView((View) object);
 
     }
+
 }

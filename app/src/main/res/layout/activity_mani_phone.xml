@@ -37,7 +37,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/centerHorizontalline"
+        android:id="@+id/centerHorizontalLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true">
@@ -46,10 +46,10 @@
 
 
     <com.hbb20.CountryCodePicker
-        android:id="@+id/countrycodepicker"
+        android:id="@+id/countryCodePicker"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_above="@id/centerHorizontalline"
+        android:layout_above="@id/centerHorizontalLine"
         android:layout_centerInParent="true"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
@@ -57,53 +57,47 @@
         app:ccpDialog_textColor="@color/titleColorBd"
         app:ccp_areaCodeDetectedCountry="true"
         app:ccp_autoDetectCountry="true">
-
     </com.hbb20.CountryCodePicker>
 
 
     <EditText
-        android:id="@+id/getphoneNumber"
-        android:layout_width="match_parent"
+        android:id="@+id/getPhoneNumber"
+        android:layout_width="488dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/centerHorizontalline"
+        android:layout_below="@+id/centerHorizontalLine"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="70dp"
         android:autofillHints="Contact"
         android:gravity="center_horizontal"
         android:hint="@string/please_enter_your_phone_number"
-        android:inputType="number"
-        android:textAlignment="center">
-
-    </EditText>
+        android:inputType="phone"
+        android:textAlignment="center" />
 
 
     <android.widget.Button
-        android:id="@+id/sendotpbutton"
+        android:id="@+id/sendOTPButton"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@id/getphoneNumber"
+        android:layout_height="48dp"
+        android:layout_below="@id/getPhoneNumber"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:background="@color/titleColorBd"
+        android:background="@color/darkerRed"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         android:text="@string/get_otp"
         android:textColor="@color/white"
-        android:textSize="15sp">
-
-    </android.widget.Button>
+        android:textSize="15sp" />
 
 
     <ProgressBar
         android:id="@+id/progressBarOTPmain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sendotpbutton"
+        android:layout_below="@id/sendOTPButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:visibility="invisible">
-
     </ProgressBar>
 
 

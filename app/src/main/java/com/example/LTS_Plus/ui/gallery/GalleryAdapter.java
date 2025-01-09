@@ -12,15 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.LTS_Plus.full_image.FullImageView;
 import com.example.LTS_Plus.R;
+import com.example.LTS_Plus.full_image.FullImageView;
 
 import java.util.List;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.galleryViewAdapter> {
 
-    private Context context;
-    private List<String> images;
+    private final Context context;
+    private final List<String> images;
 
 
     public GalleryAdapter(Context context, List<String> images) {
@@ -39,13 +39,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.galleryV
     public void onBindViewHolder(@NonNull galleryViewAdapter holder, @SuppressLint("RecyclerView") int position) {
 
         Glide.with(context).load(images.get(position)).into(holder.imageView);
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, FullImageView.class);
-                intent.putExtra("image",images.get(position));
-                context.startActivity(intent);
-            }
+        holder.imageView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, FullImageView.class);
+            intent.putExtra("image",images.get(position));
+            context.startActivity(intent);
         });
 
     }
@@ -55,7 +52,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.galleryV
         return images.size();
     }
 
-    public class galleryViewAdapter extends RecyclerView.ViewHolder {
+    public static class galleryViewAdapter extends RecyclerView.ViewHolder {
 
         ImageView imageView;
 

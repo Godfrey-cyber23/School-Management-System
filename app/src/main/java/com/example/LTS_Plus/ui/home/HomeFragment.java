@@ -8,79 +8,130 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.LTS_Plus.R;
-import com.smarteist.autoimageslider.DefaultSliderView;
-import com.smarteist.autoimageslider.IndicatorAnimations;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderLayout;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private SliderLayout sliderLayout;
-    private ImageView map;
-
+    private ViewPager2 viewPager;
+    private final List<String> imageUrls = new ArrayList<>();
+    private StorageReference storageReference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-       View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-       sliderLayout = view.findViewById(R.id.slider);
-       sliderLayout.setIndicatorAnimation(IndicatorAnimations.FILL);
-       sliderLayout.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
-       sliderLayout.setScrollTimeInSec(1);
+        // Initialize Firebase Storage
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
 
-       setSliderViews();
+        // Initialize ViewPager2
+        viewPager = view.findViewById(R.id.slider);
 
-       map = view.findViewById(R.id.mapp);
-       map.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(Intent.ACTION_VIEW);
-               intent.setData(Uri.parse("geo:0,0?q=Shyampur High School Joypurhat"));
-               Intent chooser = Intent.createChooser(intent,"Lauch Maps");
-               startActivity(chooser);
-           }
-       });
+        // Fetch image URLs from Firebase
+        fetchImageUrls();
 
-       return view;
+        // Map functionality
+        ImageView imageView = view.findViewById(R.id.imageView);
+        imageView.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("geo:0,0?q=Literacy Tree School"));
+            Intent chooser = Intent.createChooser(intent, "Launch Maps");
+            startActivity(chooser);
+        });
+
+        return view;
     }
 
-    private void setSliderViews() {
+    // Fetch image URLs from Firebase Storage
+    private void fetchImageUrls() {
+        // Example: Assuming the images are stored in a "images" folder
+        StorageReference imagesRef = storageReference.child("images");
 
-        for (int i = 0; i< 5; i++){
-            DefaultSliderView sliderView = new DefaultSliderView(getContext());
+        // List all items (images) in the folder
+        // Handle error
+        imagesRef.listAll().addOnSuccessListener(listResult -> {
+            // Iterate through the list of items
+            for (StorageReference item : listResult.getItems()) {
+                // Get the download URL for each image
+                item.getDownloadUrl().addOnSuccessListener(uri -> {
+                    // Add the URL to the list
+                    imageUrls.add(uri.toString());
 
-            switch (i){
-                case 0:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/admin-dash-42c58.appspot.com/o/Slid-Show%2Fupdate-school.jpg?alt=media&token=83214c12-a4a3-4061-8254-684739f7fc1f");
-                    break;
-
-                case 1:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/admin-dash-42c58.appspot.com/o/Slid-Show%2FUpdate%2F4.jpg?alt=media&token=70d9390d-46ef-46bb-8ed1-27f5a3013fca");
-                    break;
-
-                case 2:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/admin-dash-42c58.appspot.com/o/Slid-Show%2FUpdate%2F2.jpg?alt=media&token=d61ee8f9-b543-4f9e-9d0c-0f808947baad");
-                    break;
-
-                case 3:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/admin-dash-42c58.appspot.com/o/Slid-Show%2FUpdate%2F3.jpg?alt=media&token=9820dfe2-9ab6-48c0-8e4b-2031e843699b");
-                    break;
-
-                case 4:
-                    sliderView.setImageUrl("https://firebasestorage.googleapis.com/v0/b/admin-dash-42c58.appspot.com/o/gallery%2F20210513_181329.jpg?alt=media&token=8f065dae-ffb8-4f80-9cf3-d1fbf4de02b3");
-                    break;
-
+                    // Set the ViewPager adapter dynamically
+                    setViewPagerAdapter(imageUrls);
+                });
             }
+        }).addOnFailureListener(Throwable::printStackTrace);
+    }
 
-            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
-            sliderLayout.addSliderView(sliderView);
+    // Set the images on the ViewPager dynamically
+// Set the images on the ViewPager dynamically
+    private void setViewPagerAdapter(List<String> imageUrls) {
+        // Create an adapter for the ViewPager
+        // Inside HomeFragment or the fragment where you're using ViewPager2
+        ImagePagerAdapter adapter = new ImagePagerAdapter(getActivity(), imageUrls);
+        viewPager.setAdapter(adapter);
+    }
 
+    // Adapter for ViewPager2
+    private static class ImagePagerAdapter extends androidx.viewpager2.adapter.FragmentStateAdapter {
+        private final List<String> imageUrls;
+
+        // Constructor to pass FragmentActivity (context) to FragmentStateAdapter
+        public ImagePagerAdapter(FragmentActivity activity, List<String> imageUrls) {
+            super(activity);  // Passing the activity to the FragmentStateAdapter
+            this.imageUrls = imageUrls;
+        }
+
+        @Override
+        public int getItemCount() {
+            return imageUrls.size();
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            return ImageFragment.newInstance(imageUrls.get(position)); // Pass the URL for the image
+        }
+    }
+
+    // Fragment to display image
+    public static class ImageFragment extends Fragment {
+
+        private static final String IMAGE_URL = "image_url";
+
+        public static ImageFragment newInstance(String imageUrl) {
+            ImageFragment fragment = new ImageFragment();
+            Bundle args = new Bundle();
+            args.putString(IMAGE_URL, imageUrl);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.fragment_home, container, false);
+            assert getArguments() != null;
+            String imageUrl = getArguments().getString(IMAGE_URL);
+            ImageView imageView = view.findViewById(R.id.imageView);
+
+            // Load the image using Picasso
+            Picasso.get().load(imageUrl).into(imageView);
+            return view;
         }
     }
 }

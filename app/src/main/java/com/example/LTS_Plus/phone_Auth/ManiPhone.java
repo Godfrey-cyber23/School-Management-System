@@ -1,13 +1,13 @@
 package com.example.LTS_Plus.phone_Auth;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.LTS_Plus.MainActivity;
 import com.example.LTS_Plus.R;
@@ -41,44 +41,36 @@ public class ManiPhone extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mani_phone);
 
-        mcountryCodePicker = findViewById(R.id.countrycodepicker);
-        msendotp = findViewById(R.id.sendotpbutton);
-        mgetphonenumber = findViewById(R.id.getphoneNumber);
+        mcountryCodePicker = findViewById(R.id.countryCodePicker);
+        msendotp = findViewById(R.id.sendOTPButton);
+        mgetphonenumber = findViewById(R.id.getPhoneNumber);
         mprogressBarOTPmain = findViewById(R.id.progressBarOTPmain);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
         countrycode = mcountryCodePicker.getSelectedCountryCodeWithPlus();
 
-        mcountryCodePicker.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
-            @Override
-            public void onCountrySelected() {
-                countrycode = mcountryCodePicker.getSelectedCountryCodeWithPlus();
-            }
-        });
+        mcountryCodePicker.setOnCountryChangeListener(() -> countrycode = mcountryCodePicker.getSelectedCountryCodeWithPlus());
 
-        msendotp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String number;
-                number = mgetphonenumber.getText().toString();
-                if (number.isEmpty()) {
-                    Toasty.warning(getApplicationContext(), "Please enter your phone number", Toasty.LENGTH_SHORT).show();
-                } else if (number.length() < 11) {
-                    Toasty.warning(getApplicationContext(), "Please enter a valid phone number", Toasty.LENGTH_SHORT).show();
-                } else {
-                    mprogressBarOTPmain.setVisibility(View.VISIBLE);
-                    phonenumber = countrycode + number;
+        msendotp.setOnClickListener(v -> {
+            String number;
+            number = mgetphonenumber.getText().toString();
+            if (number.isEmpty()) {
+                Toasty.warning(getApplicationContext(), "Please enter your phone number", Toasty.LENGTH_SHORT).show();
+            } else if (number.length() < 11) {
+                Toasty.warning(getApplicationContext(), "Please enter a valid phone number", Toasty.LENGTH_SHORT).show();
+            } else {
+                mprogressBarOTPmain.setVisibility(View.VISIBLE);
+                phonenumber = countrycode + number;
 
-                    PhoneAuthOptions options = PhoneAuthOptions.newBuilder(firebaseAuth)
-                            .setPhoneNumber(phonenumber)
-                            .setTimeout(60L, TimeUnit.SECONDS)
-                            .setActivity(ManiPhone.this)
-                            .setCallbacks(mCallbacks)
-                            .build();
+                PhoneAuthOptions options = PhoneAuthOptions.newBuilder(firebaseAuth)
+                        .setPhoneNumber(phonenumber)
+                        .setTimeout(60L, TimeUnit.SECONDS)
+                        .setActivity(ManiPhone.this)
+                        .setCallbacks(mCallbacks)
+                        .build();
 
-                    PhoneAuthProvider.verifyPhoneNumber(options);
-                }
+                PhoneAuthProvider.verifyPhoneNumber(options);
             }
         });
 

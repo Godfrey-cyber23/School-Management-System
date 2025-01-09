@@ -1,32 +1,40 @@
+# Literacy Tree School App
+
 ## General
 
-This School-Management System App is Created in Android Studio using Java & Firebase.
+The Literacy Tree School App is created in Android Studio using Java and Firebase. It is designed to provide essential school management functionalities and improve communication and management within the school.
 
-<a id="raw-url" href="apk/SHS.apk?raw=true"><img src="img/download.svg"  width="180" height=auto>
-</a>
+---
 
-## Screenshots
+## Features
 
-|                                       Splash Screen                |                            Home                           |                            Navigation Drawer                           |
-| :------------------------------------------------------------------: | :-----------------------------------------------------------------: | :------------------------------------------------------------------: |
-| <img src="img/1.png" width=272 height=auto>  | <img src="img/2.png" width=272 height=auto> | <img src="img/3.png" width=272 height=auto>  |
+- **Splash Screen**
+- **Home Page**
+- **Navigation Drawer**
+- **User Authentication**
+- **Real-time Database Integration**
+- **Media Storage Support**
+- **Announcements and Notifications**
+- **PDF Viewer and Image Handling**
+
+---
 
 ## Dependencies
 
-- Firebase Dependencies
+### Firebase Dependencies
 
-```
+```gradle
 implementation 'com.google.firebase:firebase-database:20.0.2'
 implementation 'com.google.firebase:firebase-storage:20.0.0'
 implementation 'com.google.firebase:firebase-messaging:22.0.0'
 implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 implementation 'com.google.firebase:firebase-firestore:23.0.4'
-implementation 'com.firebaseui:firebase-ui-firestore:7.1.1
+implementation 'com.firebaseui:firebase-ui-firestore:7.1.1'
 ```
 
-- Others Dependencies
+### Other Dependencies
 
-```
+```gradle
 implementation 'androidx.navigation:navigation-fragment:2.3.5'
 implementation 'androidx.navigation:navigation-ui:2.3.5'
 implementation 'com.google.android.material:material:1.4.0'
@@ -45,7 +53,27 @@ implementation 'com.android.support:multidex:1.0.3'
 implementation 'com.github.GrenderG:Toasty:1.5.0'
 implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 implementation 'com.hbb20:ccp:2.5.1'
-implementation 'com.squareup.picasso:picasso:2.71828''
+implementation 'com.squareup.picasso:picasso:2.71828'
 implementation 'androidx.appcompat:appcompat:1.3.1'
 implementation "com.airbnb.android:lottie:3.4.0"
 ```
+---
+## How to Use
+
+1. Clone the repository.
+2. Open the project in Android Studio.
+3. Sync the project to download dependencies.
+4. Build and run the application on an emulator or Android device.
+
+---
+
+## Contribution
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
+---
+
+## License
+
+This project is open source. The specific license details have not been provided.
+

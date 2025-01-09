@@ -1,18 +1,16 @@
 package com.example.LTS_Plus.contact;
 
 public class ContactData {
-    private String name,  contact, key; //email,
+    private String name;
+    private String contact;
 
-    public ContactData() {
-    }
-
-    public ContactData(String name,  String contact, String key) {
+    // Parameterized Constructor
+    public ContactData(String name, String contact) {
         this.name = name;
-        //this.email = email;
         this.contact = contact;
-        this.key = key;
     }
 
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -20,7 +18,6 @@ public class ContactData {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getContact() {
         return contact;
@@ -30,11 +27,4 @@ public class ContactData {
         this.contact = contact;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
 }

@@ -1,123 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.LTS_Plus">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permissions -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Dangerous permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/lts_round"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_school_round"
+        android:roundIcon="@mipmap/ic_launcher_school"
         android:supportsRtl="true"
         android:theme="@style/Theme.LTS_Plus"
-        android:usesCleartextTraffic="true"
-        tools:replace="android:resource">
+        android:usesCleartextTraffic="true">
 
-        <activity
-            android:name="com.example.LTS_Plus.web_view.WebViewActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.LTS_Plus.developer.DeveloperActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.example.LTS_Plus.result.ResultActivity"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.ui.quiz.ScoreActivity"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.ui.quiz.StartActivity"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.student_list.StudentList"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.contact.ContactForm"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.admission.RegistrationForm"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.admission.AdmissionActivity"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.phone_Auth.UpdateProfile"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.phone_Auth.ProfileActivity"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.phone_Auth.SetProfile"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.phone_Auth.OtpAuthorization"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.login.ForgetPasswordActivity"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.login.LoginActivity"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.phone_Auth.ManiPhone"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.login.singUp"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.video.VideoLecture"
-            android:exported="false"
-            android:parentActivityName="com.example.LTS_Plus.MainActivity"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.website.WebSiteActivity"
-            android:exported="false"
-            android:parentActivityName="com.example.LTS_Plus.MainActivity"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.ebook.PdfViewerActivity"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.full_image.FullImageView"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.ebook.EbookActivity"
-            android:exported="false"
-            android:screenOrientation="sensor" />
-        <activity
-            android:name="com.example.LTS_Plus.MainActivity"
-            android:screenOrientation="sensor" />
         <activity
             android:name="com.example.LTS_Plus.phone_Auth.LandingScreen"
             android:exported="true"
-            android:screenOrientation="sensor">
+            android:theme="@style/SplashScreenTheme"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!-- Other activities -->
+        <activity android:name="com.example.LTS_Plus.web_view.WebViewActivity" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.developer.DeveloperActivity" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.ui.quiz.ScoreActivity" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.ui.quiz.StartActivity" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.student_list.StudentList" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.contact.ContactForm" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.admission.RegistrationForm" android:exported="true" />
+        <activity android:name=".admission.AdmissionActivity" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.phone_Auth.UpdateProfile" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.phone_Auth.ProfileActivity" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.phone_Auth.SetProfile" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.phone_Auth.OtpAuthorization" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.login.ForgetPasswordActivity" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.login.LoginActivity" />
+        <activity android:name="com.example.LTS_Plus.phone_Auth.ManiPhone" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.login.SignUp" />
+        <activity android:name="com.example.LTS_Plus.video.VideoLecture" android:exported="true"
+            android:parentActivityName="com.example.LTS_Plus.MainActivity" />
+        <activity android:name="com.example.LTS_Plus.website.WebSiteActivity" android:exported="true" android:parentActivityName="com.example.LTS_Plus.MainActivity" />
+        <activity android:name="com.example.LTS_Plus.ebook.PdfViewerActivity" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.full_image.FullImageView" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.ebook.EbookActivity" android:exported="true" />
+        <activity android:name="com.example.LTS_Plus.MainActivity"
+            android:exported="true"/>
+
+        <!-- Services -->
         <service
             android:name="com.example.LTS_Plus.MyFirebaseMessagingService"
             android:enabled="true"
@@ -128,19 +70,11 @@
             </intent-filter>
         </service>
 
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_app_id" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@mipmap/lts_round" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/light_green_300" />
-        <property
-            android:name="android.adservices.AD_SERVICES_CONFIG"
-            android:resource="@xml/ga_ad_services_config"
-            tools:replace="android:resource" />
-    </application>
+        <!-- Metadata -->
+        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="@string/admob_app_id" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@mipmap/lts_round" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/light_green_300" />
+        <property android:name="android.adservices.AD_SERVICES_CONFIG" android:resource="@xml/ga_ad_services_config" tools:replace="android:resource" />
 
+    </application>
 </manifest>

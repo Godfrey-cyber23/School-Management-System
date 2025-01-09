@@ -1,9 +1,10 @@
 package com.example.LTS_Plus.ui.about;
 
-public class BranchModel extends BanchAdapter {
+public class BranchModel extends BranchAdapter {
 
-    private int img;
-    private String title, description;
+    private final int img;
+    private String title;
+    private final String description;
 
     public BranchModel(int img, String title, String description) {
         this.img = img;
@@ -14,10 +15,6 @@ public class BranchModel extends BanchAdapter {
 
     public int getImg() {
         return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
     }
 
     public String getTitle() {
@@ -32,7 +29,4 @@ public class BranchModel extends BanchAdapter {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

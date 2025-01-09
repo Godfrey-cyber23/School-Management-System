@@ -11,12 +11,6 @@
         android:icon="@drawable/newbook"
         android:title="@string/book" />
 
-    <!--    <item-->
-    <!--        android:id="@+id/navigation_studentList"-->
-    <!--        android:icon="@drawable/mortarboard"-->
-    <!--        android:title="Student" />-->
-
-
     <item
         android:id="@+id/navigation_website"
         android:icon="@drawable/newwebsite"
@@ -33,18 +27,13 @@
         android:icon="@drawable/newrate"
         android:title="@string/rate_the_app" />
 
-
-    <item
-        android:id="@+id/navigation_result"
-        android:icon="@drawable/newresult"
-        android:title="@string/result" />
-
-
     <item
         android:id="@+id/navigation_admission"
         android:icon="@drawable/newadmission"
         android:title="@string/admission_form" />
-
+    <item
+        android:id="@+id/student_list"
+        android:title="@string/student_list" />
     <item
         android:id="@+id/navigation_contact"
         android:icon="@drawable/contact"
@@ -56,14 +45,12 @@
         android:title="@string/developer" />
 
 
-    <!--    <item android:id="@+id/navigation_theme"-->
-    <!--        android:title="Themes"-->
-    <!--        android:icon="@drawable/theme"/>-->
+    <item android:id="@+id/navigation_theme"
+        android:icon="@drawable/themes_background"
+        android:title="@string/themes" />
 
-
-    <!--    <item android:id="@+id/logout"-->
-    <!--        android:title="Logout"-->
-    <!--        android:icon="@drawable/new_logout"/>-->
-
+    <item android:id="@+id/logout"
+         android:icon="@mipmap/logout"
+        android:title="@string/logout" />
 
 </menu>

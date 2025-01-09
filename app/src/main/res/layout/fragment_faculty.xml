@@ -14,22 +14,25 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:layout_marginVertical="8dp"
-                android:background="#c1c1c1" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/headTeacher"
+            <!-- Section for Creative Studies -->
+            <TextView
+                android:id="@+id/creativeStudies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:visibility="gone" />
+                android:text="@string/creative_studies"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/creativeStudiesRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
 
             <LinearLayout
-                android:id="@+id/headNoData"
+                android:id="@+id/creativeStudiesNoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -39,22 +42,25 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:layout_marginVertical="8dp"
-                android:background="#c1c1c1" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/csDepartment"
+            <!-- Section for Special Paper 1 -->
+            <TextView
+                android:id="@+id/specialPaper1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:visibility="gone" />
+                android:text="@string/special_paper_1"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/specialPaper1Recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
 
             <LinearLayout
-                android:id="@+id/csNoData"
+                android:id="@+id/sp1NoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -64,22 +70,25 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:layout_marginVertical="8dp"
-                android:background="#c1c1c1" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/mechanicalDepartment"
+            <!-- Section for Special Paper 2 -->
+            <TextView
+                android:id="@+id/specialPaper2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:visibility="gone" />
+                android:text="@string/special_paper_2"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/specialPaper2Recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
 
             <LinearLayout
-                android:id="@+id/mecNoData"
+                android:id="@+id/sp2NoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -89,22 +98,25 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:layout_marginVertical="8dp"
-                android:background="#c1c1c1" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/physicsDepartment"
+            <!-- Section for Social Studies -->
+            <TextView
+                android:id="@+id/socialStudies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:visibility="gone" />
+                android:text="@string/social_studies"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/socialStudiesRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
 
             <LinearLayout
-                android:id="@+id/phyNoData"
+                android:id="@+id/ssNoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -114,22 +126,135 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:layout_marginVertical="8dp"
-                android:background="#c1c1c1" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/chmesityDepartment"
+            <!-- Section for Math -->
+            <TextView
+                android:id="@+id/mathematics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:visibility="gone" />
+                android:text="@string/mathematics"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mathematicsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
 
             <LinearLayout
-                android:id="@+id/chNoData"
+                android:id="@+id/mathNoData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <include layout="@layout/no_data_found" />
+            </LinearLayout>
+
+            <!-- Section for Science -->
+            <TextView
+                android:id="@+id/science"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/science"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/scienceRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <LinearLayout
+                android:id="@+id/sciNoData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include layout="@layout/no_data_found" />
+
+            </LinearLayout>
+
+            <!-- Section for English -->
+            <TextView
+                android:id="@+id/english"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/english"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/englishRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <LinearLayout
+                android:id="@+id/engNoData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include layout="@layout/no_data_found" />
+
+            </LinearLayout>
+
+            <!-- Section for IT -->
+            <TextView
+                android:id="@+id/itStudies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/information_technology"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/itRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <LinearLayout
+                android:id="@+id/itNoData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include layout="@layout/no_data_found" />
+
+            </LinearLayout>
+
+            <!-- Section for Computer Studies -->
+            <TextView
+                android:id="@+id/ctsStudies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/c_t_s"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ctsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <LinearLayout
+                android:id="@+id/ctsNoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

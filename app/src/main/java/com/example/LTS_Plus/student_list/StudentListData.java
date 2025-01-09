@@ -1,17 +1,16 @@
 package com.example.LTS_Plus.student_list;
 
 public class StudentListData {
-    private String name, phone, address,  image, key;
+    private String name;
+    private String phone;
+    private final String address;
+    private String image;
 
-    public StudentListData() {
-    }
-
-    public StudentListData(String name, String phone, String address, String image, String key) {
+    public StudentListData(String name, String phone, String address, String image) {
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.image = image;
-        this.key = key;
     }
 
     public String getName() {
@@ -34,10 +33,6 @@ public class StudentListData {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getImage() {
         return image;
     }
@@ -46,11 +41,4 @@ public class StudentListData {
         this.image = image;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
 }

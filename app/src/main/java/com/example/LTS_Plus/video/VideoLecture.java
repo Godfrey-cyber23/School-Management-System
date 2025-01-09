@@ -7,7 +7,7 @@ import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.literacytree.LTS_Plus.R;
+import com.example.LTS_Plus.R;
 
 public class VideoLecture extends AppCompatActivity {
     private WebView webView;
@@ -16,12 +16,12 @@ public class VideoLecture extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_lucture);
+        setContentView(R.layout.activity_video_lecture);
 
-        webView=(WebView) findViewById(R.id.webViewId);
+        webView= findViewById(R.id.webViewId);
 
         WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptEnabled(false);
 
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("https://www.youtube.com/channel/UCaLE871spHwdUzB0Q8Iux0w");

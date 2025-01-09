@@ -1,0 +1,4 @@
+<!-- splash_screen_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/light_green_700" /> <!-- Set your color -->
+</shape>

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme -->
     <style name="Theme.LTS_Plus" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Default font family -->
@@ -9,14 +9,27 @@
         <item name="colorPrimaryVariant">@color/red</item>
         <item name="colorOnPrimary">@color/white</item>
 
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorSecondary">@color/blue</item>
+
+
         <!-- Status bar color -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
         <!-- System splash screen attributes for Android 12+ -->
-        <item name="android:windowSplashScreenBackground">@color/light_green_300</item>
+        <item name="android:windowSplashScreenBackground">@color/light_green_700</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/school_logo</item>
         <item name="android:windowSplashScreenAnimationDuration">1000</item>
-        <item name="postSplashScreenTheme">@style/Theme.LTS_Plus</item>
+        <item name="postSplashScreenTheme" >@style/Theme.PostSplashScreen</item>
+    </style>
+
+    <!-- Post-splash theme for Android 12+ -->
+    <style name="Theme.PostSplashScreen" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Define colors and appearance for post-splash screen -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryVariant">@color/red</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+
     </style>
 
     <!-- Style for progress bars -->
