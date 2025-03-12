@@ -22,11 +22,13 @@ import java.util.List;
 public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.EbookViewHolder> {
 
     private final Context context;
-    private List<EbookData> list;
+    private final List<EbookData> list;
 
     public EbookAdapter(Context context, List<EbookData> list) {
         this.context = context;
+        // Ensure the list is not null
         this.list = list != null ? list : new ArrayList<>();
+
     }
 
     @NonNull
@@ -41,14 +43,18 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.EbookViewHol
         EbookData ebook = list.get(position);
         if (ebook != null) {
             holder.ebookName.setText(ebook.getPdfTitle());
+
+            // Apply animation to the itemView
             setAnimation(holder.itemView);
 
+            // Handle item click to open PDF viewer
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, PdfViewerActivity.class);
                 intent.putExtra("pdfUrl", ebook.getPdfUrl());
                 context.startActivity(intent);
             });
 
+            // Handle download click
             holder.ebookDownload.setOnClickListener(v -> {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(ebook.getPdfUrl()));
                 context.startActivity(intent);
@@ -57,23 +63,18 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.EbookViewHol
     }
 
     private void setAnimation(View view) {
-        Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
-        if (view.getAnimation() == null) { // Only set animation if it's not already set
+        if (view.getAnimation() == null) { // Avoid redundant animations
+            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
             view.startAnimation(animation);
         }
     }
 
     @Override
     public int getItemCount() {
-        return list != null ? list.size() : 0;
+        return list.size();
     }
 
-    public void FilteredList(ArrayList<EbookData> filteredList) {
-        // If filteredList is not null, assign it to the 'list'; otherwise, assign a new empty ArrayList.
-        list = filteredList != null ? filteredList : new ArrayList<>();
-
-        // Notify the adapter that the data set has been updated.
-        notifyDataSetChanged();
+    public void FilteredList() {
     }
 
 
@@ -84,6 +85,7 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.EbookViewHol
 
         public EbookViewHolder(@NonNull View itemView) {
             super(itemView);
+            // Bind the views
             ebookName = itemView.findViewById(R.id.ebookName);
             ebookDownload = itemView.findViewById(R.id.ebookDownload);
         }

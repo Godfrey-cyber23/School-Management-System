@@ -1,55 +1,27 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:orientation="horizontal"
-    android:gravity="center_vertical">
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
-    <!-- Student Image (set fixed size for better fitting) -->
+    <!-- Inside the toolbar, you can add views like images or TextViews -->
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/studentImage"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/profile"
-        android:layout_marginEnd="12dp"/>
+        android:layout_gravity="start"
+        android:layout_margin="8dp" />
 
-    <!-- Student Name (no truncation, will wrap if necessary) -->
-    <LinearLayout
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/studentName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:text="@string/godfrey_bwalya"
+        android:textColor="@color/black"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="12dp" />
 
-        <TextView
-            android:id="@+id/studentName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/godfrey_bwalya"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:paddingStart="12sp"
-            android:paddingEnd="12sp" />
-
-        <TextView
-            android:id="@+id/studentPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/_01"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:paddingStart="12sp"
-            android:paddingEnd="12sp" />
-
-        <TextView
-            android:id="@+id/studentAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/makeni_bonaventure_lusaka"
-            android:textColor="@color/textColor"
-            android:textSize="18sp"
-            android:paddingStart="12sp"
-            android:paddingEnd="12sp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.appcompat.widget.Toolbar>

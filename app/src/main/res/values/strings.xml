@@ -280,5 +280,8 @@
     <string name="c_t_s">C.T.S</string>
     <string name="roll">Roll</string>
     <string name="fragment_image_here">Fragment Image here</string>
+    <string name="message_from_the_head_teacher_description">Message From the Head teacher description</string>
+    <string name="history_section_of_the_school">History Section Of the School</string>
+    <string name="image_description">Image description</string>
 
 </resources>

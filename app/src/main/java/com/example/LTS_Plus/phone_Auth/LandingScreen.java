@@ -1,5 +1,6 @@
 package com.example.LTS_Plus.phone_Auth;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -20,20 +21,28 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LandingScreen extends AppCompatActivity {
 
     private static final String TAG = "LandingScreen";
-    private static final int SPLASH_DELAY = 3000; // 3 seconds delay
+    private static final int SPLASH_DELAY = 3000; // Delay in milliseconds (3 seconds)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Initialize Firebase
-        FirebaseApp.initializeApp(this);
+        try {
+            FirebaseApp.initializeApp(this);
+            Log.d(TAG, "onCreate: Firebase initialized successfully.");
+        } catch (Exception e) {
+            Log.e(TAG, "onCreate: Firebase initialization failed: " + e.getMessage());
+            Toast.makeText(this, "Error initializing Firebase. Please restart the app.", Toast.LENGTH_LONG).show();
+            finish(); // Exit the app if Firebase initialization fails
+            return;
+        }
 
         // Set the layout for the landing screen
         setContentView(R.layout.activity_landing_screen);
 
         // Log initialization
-        Log.d(TAG, "onCreate: Firebase initialized and layout set.");
+        Log.d(TAG, "onCreate: Layout set for LandingScreen.");
     }
 
     @Override
@@ -41,29 +50,28 @@ public class LandingScreen extends AppCompatActivity {
         super.onStart();
         Log.d(TAG, "onStart: Entered LandingScreen");
 
+        // Check for network connection
         if (!isNetworkConnected()) {
-            Toast.makeText(this, "No internet connection. Please check your network.", Toast.LENGTH_LONG).show();
             Log.e(TAG, "onStart: No internet connection.");
+            showNetworkDialog();
             return;
         }
 
         Log.d(TAG, "onStart: Network connected. Proceeding with authentication check.");
 
+        // Delay to show splash screen
         new Handler().postDelayed(() -> {
             FirebaseAuth auth = FirebaseAuth.getInstance();
 
             if (auth.getCurrentUser() == null) {
                 Log.d(TAG, "onStart: User not authenticated. Redirecting to Login.");
-                Toast.makeText(this, "User not authenticated. Redirecting to Login.", Toast.LENGTH_SHORT).show();
                 navigateToLogin();
             } else {
                 Log.d(TAG, "onStart: User authenticated. Redirecting to Main.");
-                Toast.makeText(this, "Welcome back, user!", Toast.LENGTH_SHORT).show();
                 navigateToMain();
             }
         }, SPLASH_DELAY);
     }
-
 
     /**
      * Checks if the device is connected to the internet.
@@ -72,26 +80,59 @@ public class LandingScreen extends AppCompatActivity {
      */
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm != null ? cm.getActiveNetworkInfo() : null;
-        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        if (cm == null) {
+            Log.e(TAG, "isNetworkConnected: ConnectivityManager is null.");
+            return false;
+        }
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork == null) {
+            Log.e(TAG, "isNetworkConnected: NetworkInfo is null.");
+            return false;
+        }
+        return activeNetwork.isConnectedOrConnecting();
     }
 
     /**
-     * Navigate to the LoginActivity.
+     * Show a dialog if there's no network connection.
+     */
+    private void showNetworkDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("No Internet")
+                .setMessage("Please check your connection and try again.")
+                .setPositiveButton("Retry", (dialog, which) -> {
+                    if (isNetworkConnected()) {
+                        onStart(); // Retry the process
+                    } else {
+                        showNetworkDialog(); // Show dialog again if still no connection
+                    }
+                })
+                .setNegativeButton("Exit", (dialog, which) -> {
+                    Log.d(TAG, "showNetworkDialog: User chose to exit the app.");
+                    finish(); // Exit the app
+                })
+                .setCancelable(false)
+                .show();
+    }
+
+    /**
+     * Navigate to the LoginActivity with a fade animation.
      */
     private void navigateToLogin() {
+        Log.d(TAG, "navigateToLogin: Redirecting to LoginActivity.");
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out); // Apply fade animation
         finish(); // Finish LandingScreen so it doesn't remain in the back stack
     }
 
     /**
-     * Navigate to the MainActivity.
+     * Navigate to the MainActivity with a fade animation.
      */
     private void navigateToMain() {
-        Log.d(TAG, "Navigating to MainActivity.");
+        Log.d(TAG, "navigateToMain: Redirecting to MainActivity.");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out); // Apply fade animation
         finish(); // Finish LandingScreen so it doesn't remain in the back stack
     }
 }

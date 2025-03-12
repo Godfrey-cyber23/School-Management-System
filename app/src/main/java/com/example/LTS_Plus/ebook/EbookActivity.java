@@ -100,7 +100,7 @@ public class EbookActivity extends AppCompatActivity {
                 filteredList.add(item);
             }
         }
-        adapter.FilteredList(filteredList);
+        adapter.FilteredList();
     }
 
     @Override
