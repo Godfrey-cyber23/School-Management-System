@@ -4,20 +4,24 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/house"
+        android:name="com.example.app.HomeFragment"
         android:title="@string/home" />
 
     <item
         android:id="@+id/navigation_notice"
+        android:name="com.example.app.NoticeFragment"
         android:icon="@drawable/notice"
         android:title="@string/notice" />
 
     <item
         android:id="@+id/navigation_faculty_"
+        android:name="com.example.app.FacultyFragment"
         android:icon="@drawable/faculty"
         android:title="@string/teacher" />
 
     <item
         android:id="@+id/navigation_gallery"
+        android:name="com.example.app.GalleryFragment"
         android:icon="@drawable/image"
         android:title="@string/gallery" />
 

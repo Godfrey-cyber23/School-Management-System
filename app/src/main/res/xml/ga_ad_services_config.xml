@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingClass">
+
+    <!-- Ad Services Configuration -->
+    <androidx.preference.PreferenceCategory
+        app:title="Ad Services Configuration"
+        app:titleTextColor="#018786">
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:key="ad_personalization"
+            app:title="Ad Personalization"
+            app:summary="Enable or disable personalized ads"
+            app:defaultValue="true" />
+
+        <androidx.preference.ListPreference
+            app:key="frequency_capping"
+            app:title="Frequency Capping"
+            app:summary="Set a limit on the number of ad impressions"
+            app:dialogTitle="Select frequency cap"
+            app:entries="@array/frequency_capping_options"
+            app:entryValues="@array/frequency_capping_values"
+            app:defaultValue="1" />
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

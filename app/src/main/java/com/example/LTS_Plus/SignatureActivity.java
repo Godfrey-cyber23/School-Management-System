@@ -34,8 +34,8 @@ public class SignatureActivity extends AppCompatActivity {
         signaturePad.setMinWidth(15.0f); // A larger value for finger/thumb input
 
         // Set up the SeekBar for adjusting pen width
-        penWidthSeekBar.setMax(50); // Max pen width
-        penWidthSeekBar.setProgress(15); // Default pen width
+        penWidthSeekBar.setMax(50);
+        penWidthSeekBar.setProgress(15);
         penWidthSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

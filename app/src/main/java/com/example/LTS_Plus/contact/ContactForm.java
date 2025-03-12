@@ -63,11 +63,11 @@ public class ContactForm extends AppCompatActivity {
             Contact.setError("Please Enter Your Message");
             Contact.requestFocus();
         } else {
-            insertData(name, email, contact);
+            insertData(name, contact);
         }
     }
 
-    private void insertData(String name, String email, String contact) {
+    private void insertData(String name, String contact) {
         pd.show(); // Show ProgressDialog
 
         String uniqueKey = reference.push().getKey();

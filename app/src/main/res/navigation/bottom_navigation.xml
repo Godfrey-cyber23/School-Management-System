@@ -9,6 +9,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.LTS_Plus.ui.home.HomeFragment"
+        android:icon="@drawable/house"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
 
@@ -16,20 +17,15 @@
     <fragment
         android:id="@+id/navigation_notice"
         android:name="com.example.LTS_Plus.ui.notice.NoticeFragment"
+        android:icon="@drawable/notice"
         android:label="Notice"
         tools:layout="@layout/fragment_notice" />
-
-    <!-- Quiz Results Fragment -->
-    <fragment
-        android:id="@+id/navigation_quiz"
-        android:name="com.example.LTS_Plus.ui.quiz.QuizFragment"
-        android:label="Quiz Results"
-        tools:layout="@layout/fragment_quiz" />
 
     <!-- Faculty Fragment -->
     <fragment
         android:id="@+id/navigation_faculty"
         android:name="com.example.LTS_Plus.ui.faculty.FacultyFragment"
+        android:icon="@drawable/faculty"
         android:label="Faculty"
         tools:layout="@layout/fragment_faculty" />
 
@@ -37,6 +33,7 @@
     <fragment
         android:id="@+id/navigation_gallery"
         android:name="com.example.LTS_Plus.ui.gallery.GalleryFragment"
+        android:icon="@drawable/image"
         android:label="Gallery"
         tools:layout="@layout/fragment_gallery" />
 

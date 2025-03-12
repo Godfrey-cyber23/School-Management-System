@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:hint="@string/child_s_surname"
+                android:importantForAccessibility="yes"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,6 +98,7 @@
                 android:hint="@string/date_of_birth_yyyy_mm_dd"
                 android:inputType="date"
                 android:textColor="@color/black"
+                android:importantForAccessibility="yes"
                 android:backgroundTint="#E0E0E0"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,6 +114,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:hint="@string/place_of_birth"
+                android:importantForAccessibility="yes"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,6 +148,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:hint="@string/religion"
+                android:importantForAccessibility="yes"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,6 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:importantForAccessibility="yes"
                 android:hint="@string/childs_age"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -172,6 +177,7 @@
                 android:id="@+id/childsGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="yes"
                 android:hint="@string/childs_sex"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -198,6 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/father_s_name"
+                android:importantForAccessibility="yes"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -212,6 +219,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/father_s_contact"
+                android:importantForAccessibility="yes"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -236,6 +244,7 @@
                 android:id="@+id/mothersName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="yes"
                 android:hint="@string/mother_s_name"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -250,6 +259,7 @@
                 android:id="@+id/mothersContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="yes"
                 android:hint="@string/mother_s_contact"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -275,6 +285,7 @@
                 android:id="@+id/residentialAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="yes"
                 android:hint="@string/residential_address"
                 android:inputType="textPostalAddress" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -300,6 +311,7 @@
                 android:id="@+id/emergencyContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="yes"
                 android:hint="@string/emergency_contact_number"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -327,6 +339,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/details_here"
                 android:inputType="textMultiLine"
+                android:importantForAccessibility="yes"
                 android:backgroundTint="#E0E0E0"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -340,6 +353,7 @@
                 android:id="@+id/doctorsContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="yes"
                 android:hint="@string/doctors_contact"
                 android:inputType="phone"
                 android:backgroundTint="#E0E0E0"/>
@@ -370,6 +384,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/date_of_entry"
+            android:importantForAccessibility="yes"
             android:inputType="date"
             android:textColor="#212121"
         android:backgroundTint="#E0E0E0" />
@@ -388,6 +403,7 @@
             android:id="@+id/question1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:importantForAccessibility="yes"
             android:hint="@string/allergies"
             android:inputType="textMultiLine"
             android:textColor="#212121"
@@ -407,6 +423,7 @@
                 android:id="@+id/question2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="yes"
                 android:hint="@string/vaccination"
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -492,6 +509,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="@dimen/_488sdp"
         android:textColor="@color/black"
+            android:importantForAccessibility="yes"
         android:hint="@string/any_other_relevant_details"
         android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -530,6 +548,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="Enter Name"
+                android:importantForAccessibility="yes"
                 android:hint="@string/enter_your_name"
                 android:inputType="text"
                 android:textSize="16sp"

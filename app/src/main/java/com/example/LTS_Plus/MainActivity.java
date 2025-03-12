@@ -29,7 +29,6 @@ import com.example.LTS_Plus.ui.faculty.FacultyFragment;
 import com.example.LTS_Plus.ui.gallery.GalleryFragment;
 import com.example.LTS_Plus.ui.home.HomeFragment;
 import com.example.LTS_Plus.ui.notice.NoticeAdapter;
-import com.example.LTS_Plus.ui.quiz.StartActivity;
 import com.example.LTS_Plus.video.VideoLecture;
 import com.example.LTS_Plus.website.WebSiteActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -51,16 +50,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         auth = FirebaseAuth.getInstance();
 
         // Toolbar Setup
-        Toolbar toolbar = findViewById(R.id.toolbarId);
+        Toolbar toolbar = findViewById(R.id.toolbar); // toolbar ID from toolbar_layout.xml
         setSupportActionBar(toolbar);
 
         // Drawer and Navigation Setup
         drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        View uploadTrigger = findViewById(R.id.cardUpload);
-        uploadTrigger.setOnClickListener(v -> openFilePicker());
 
         getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
 
@@ -103,8 +99,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigateToActivity(HomeFragment.class);
         } else if (id == R.id.navigation_faculty_) {
             navigateToActivity(FacultyFragment.class);
-        } else if (id == R.id.navigation_quiz) {
-            navigateToActivity(StartActivity.class);
         } else if (id == R.id.navigation_gallery) {
             navigateToActivity(GalleryFragment.class);
         } else if (id == R.id.logout) {
@@ -224,8 +218,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void applyThemeChanges() {
-        // Save the theme choice if needed (e.g., in SharedPreferences)
-        // Restart the activity to apply the new theme
         recreate();
     }
 

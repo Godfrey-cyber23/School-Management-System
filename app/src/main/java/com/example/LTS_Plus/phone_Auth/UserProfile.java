@@ -11,10 +11,10 @@ package com.example.LTS_Plus.phone_Auth;
 public class UserProfile {
 
     // Stores the username of the user.
-    public String username;
+    public final String username;
 
     // Stores the unique ID of the user (used for identification in databases like Firebase).
-    public String userUID;
+    public final String userUID;
 
     /**
      * Parameterized constructor.

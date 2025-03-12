@@ -1,8 +1,8 @@
 package com.example.LTS_Plus.ui.notice;
 
 public class NoticeData {
-    String title, image, date, time, key;
-
+    String title, image;
+    final String date,time, key;
     public NoticeData(String title, String image, String date, String time, String key) {
         this.title = title;
         this.image = image;

@@ -17,4 +17,7 @@ public class EbookData {
         return pdfUrl;
     }
 
+    public Object getId() {
+        return null;
+    }
 }

@@ -1,6 +1,5 @@
 package com.example.LTS_Plus.admission;
 
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
