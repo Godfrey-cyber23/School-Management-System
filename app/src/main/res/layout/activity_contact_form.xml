@@ -1,8 +1,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
+    android:fillViewport="true"
     tools:context=".contact.ContactForm">
 
     <LinearLayout
@@ -11,6 +13,35 @@
         android:orientation="vertical"
         android:padding="16dp"
         android:gravity="center_horizontal">
+
+        <!-- Toolbar with Back Button and School Logo -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <!-- Back Button -->
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/back_button"
+                android:padding="12dp"
+                android:src="@drawable/ic_back_btn" />
+
+            <!-- School Logo -->
+            <ImageView
+                android:id="@+id/schoolLogo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/school_logo"
+            android:contentDescription="@string/school_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+        </RelativeLayout>
 
         <!-- Title Text -->
         <TextView
@@ -21,19 +52,18 @@
             android:gravity="center"
             android:padding="15dp"
             android:paddingBottom="20dp"
-            android:text="@string/complaint_letter"
+            android:text="@string/contact_us"
             android:textAllCaps="true"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold" />
 
         <!-- Name Field -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:maxWidth="488dp"
             android:layout_gravity="center_horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -41,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:hint="@string/subject"
+                android:gravity="start"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey_600" />
@@ -49,17 +80,18 @@
         <!-- Email Field -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:maxWidth="488dp"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Email"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:hint="@string/email"
+                android:gravity="start"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey_600" />
@@ -68,19 +100,18 @@
         <!-- Contact Field -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:maxWidth="488dp"
             android:layout_gravity="center_horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Contact"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="127dp"
                 android:gravity="top"
                 android:hint="@string/complaint"
-                android:inputType="text"
+                android:inputType="textLongMessage"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey_600" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -88,7 +119,7 @@
         <!-- Submit Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
@@ -96,6 +127,8 @@
             android:text="@string/submit"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:cornerRadius="8dp"
+            android:foreground="?attr/selectableItemBackground" />
     </LinearLayout>
 </ScrollView>

@@ -4,9 +4,11 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.LTS_Plus.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,6 +31,20 @@ public class ContactForm extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        // Initialize the back button
+        ImageView backButton = findViewById(R.id.backButton);
+
+        // Load the .gif file using Glide
+        Glide.with(this)
+                .asGif() // Specify that this is a GIF
+                .load(R.drawable.ic_back_btn) // Replace with your .gif file
+                .into(backButton);
+
+        // Handle back button click
+        backButton.setOnClickListener(v -> {
+            onBackPressed(); // Navigate back
+        });
 
         // Initialize Views
         Name = findViewById(R.id.Name);

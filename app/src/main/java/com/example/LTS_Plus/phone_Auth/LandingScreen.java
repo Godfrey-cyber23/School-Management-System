@@ -40,31 +40,23 @@ public class LandingScreen extends AppCompatActivity {
 
         // Set the layout for the landing screen
         setContentView(R.layout.activity_landing_screen);
-
-        // Log initialization
-        Log.d(TAG, "onCreate: Layout set for LandingScreen.");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart: Entered LandingScreen");
 
         // Check for network connection
         if (!isNetworkConnected()) {
-            Log.e(TAG, "onStart: No internet connection.");
             showNetworkDialog();
             return;
         }
-
-        Log.d(TAG, "onStart: Network connected. Proceeding with authentication check.");
 
         // Delay to show splash screen
         new Handler().postDelayed(() -> {
             FirebaseAuth auth = FirebaseAuth.getInstance();
 
             if (auth.getCurrentUser() == null) {
-                Log.d(TAG, "onStart: User not authenticated. Redirecting to Login.");
                 navigateToLogin();
             } else {
                 Log.d(TAG, "onStart: User authenticated. Redirecting to Main.");
@@ -129,10 +121,9 @@ public class LandingScreen extends AppCompatActivity {
      * Navigate to the MainActivity with a fade animation.
      */
     private void navigateToMain() {
-        Log.d(TAG, "navigateToMain: Redirecting to MainActivity.");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out); // Apply fade animation
-        finish(); // Finish LandingScreen so it doesn't remain in the back stack
+        finish();
     }
 }
