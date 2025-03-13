@@ -1,5 +1,6 @@
 package com.example.LTS_Plus.login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,8 +38,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // Initialize FirebaseAuth
+        // Initialize FirebaseAuth
         auth = FirebaseAuth.getInstance();
 
+        // Initialize UI elements
         // Initialize UI elements
         TextView openReg = findViewById(R.id.openReg);
         TextView openForgetPassword = findViewById(R.id.openForgetPassword);
@@ -101,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // Proceed to login
+        // Proceed to login
         loginUser(email, password);
     }
 
@@ -160,11 +164,17 @@ public class LoginActivity extends AppCompatActivity {
     private void navigateToMain() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
     private void navigateToSignUp() {
         Intent intent = new Intent(LoginActivity.this, SignUp.class);
+        startActivity(intent);
+    }
+
+    private void navigateToForgetPassword() {
+        Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
         startActivity(intent);
     }
 

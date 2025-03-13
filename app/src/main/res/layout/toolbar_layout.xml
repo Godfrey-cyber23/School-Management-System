@@ -6,10 +6,15 @@
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
     <!-- Profile Image -->
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/studentImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/profile"
