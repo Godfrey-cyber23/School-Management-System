@@ -1,56 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_video"
         android:icon="@drawable/newvideo"
-        android:title="@string/video_lecture" />
+        android:title="@string/video_lecture"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/navigation_ebook"
         android:icon="@drawable/newbook"
-        android:title="@string/book" />
+        android:title="@string/book"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/navigation_website"
         android:icon="@drawable/newwebsite"
-        android:title="@string/website" />
-
+        android:title="@string/website"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/navigation_share"
         android:icon="@drawable/newshare"
-        android:title="@string/share" />
+        android:title="@string/share"
+        app:showAsAction="never" /> <!-- Always show in overflow menu -->
 
     <item
         android:id="@+id/navigation_rate"
         android:icon="@drawable/newrate"
-        android:title="@string/rate_the_app" />
+        android:title="@string/rate_the_app"
+        app:showAsAction="never" /> <!-- Always show in overflow menu -->
 
     <item
         android:id="@+id/navigation_admission"
         android:icon="@drawable/newadmission"
-        android:title="@string/admission_form" />
+        android:title="@string/admission_form"
+        app:showAsAction="never" /> <!-- Always show in overflow menu -->
+
     <item
         android:id="@+id/student_list"
-        android:title="@string/student_list" />
+        android:title="@string/student_list"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/navigation_contact"
         android:icon="@drawable/contact"
-        android:title="@string/contact_us" />
+        android:title="@string/contact_us"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/navigation_developer"
         android:icon="@drawable/newuser"
-        android:title="@string/developer" />
+        android:title="@string/developer"
+        app:showAsAction="never" />
 
-
-    <item android:id="@+id/navigation_theme"
+    <item
+        android:id="@+id/navigation_theme"
         android:icon="@drawable/themes_background"
-        android:title="@string/themes" />
+        android:title="@string/themes"
+        app:showAsAction="never" />
 
-    <item android:id="@+id/logout"
-         android:icon="@mipmap/logout"
-        android:title="@string/logout" />
+    <item
+        android:id="@+id/logout"
+        android:icon="@mipmap/logout"
+        android:title="@string/logout"
+        app:showAsAction="never" />
 
 </menu>

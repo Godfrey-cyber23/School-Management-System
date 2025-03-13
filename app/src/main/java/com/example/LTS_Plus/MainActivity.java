@@ -8,11 +8,13 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -20,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.bumptech.glide.Glide;
 import com.example.LTS_Plus.contact.ContactForm;
 import com.example.LTS_Plus.developer.DeveloperActivity;
 import com.example.LTS_Plus.ebook.EbookActivity;
@@ -33,13 +36,20 @@ import com.example.LTS_Plus.video.VideoLecture;
 import com.example.LTS_Plus.website.WebSiteActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.annotations.Nullable;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int FILE_PICKER_REQUEST_CODE = 1;
     private DrawerLayout drawerLayout;
     private FirebaseAuth auth;
+    private CircleImageView studentImage; // For profile image
+    private TextView studentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +60,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         auth = FirebaseAuth.getInstance();
 
         // Toolbar Setup
-        Toolbar toolbar = findViewById(R.id.toolbar); // toolbar ID from toolbar_layout.xml
-        setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbarId); // Ensure this ID matches your Toolbar ID
+        setSupportActionBar(toolbar); // Set the Toolbar as the action bar
+
+        // Access views in the Toolbar
+        studentImage = toolbar.findViewById(R.id.studentImage); // CircleImageView
+        studentName = toolbar.findViewById(R.id.studentName); // TextView
 
         // Drawer and Navigation Setup
         drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
+        // Add the hamburger icon and sync the DrawerLayout with the Toolbar
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        // Update the Toolbar with user data
+        fetchUserData();
 
         // Check for internet connectivity
         if (isConnected()) {
@@ -66,14 +87,89 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void openFilePicker() {
-        // Create an intent to open the file picker
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("*/*"); // Allow all file types
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.navigation_drawer, menu); // Inflate the correct menu resource file
+        return true;
+    }
 
-        // Launch the file picker activity
-        startActivityForResult(Intent.createChooser(intent, "Select a file"), FILE_PICKER_REQUEST_CODE);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        // Handle overflow menu item clicks
+        if (id == R.id.navigation_video) {
+            navigateToActivity(VideoLecture.class);
+            return true;
+        } else if (id == R.id.navigation_ebook) {
+            navigateToActivity(EbookActivity.class);
+            return true;
+        } else if (id == R.id.navigation_website) {
+            navigateToActivity(WebSiteActivity.class);
+            return true;
+        } else if (id == R.id.navigation_share) {
+            shareApp();
+            return true;
+        } else if (id == R.id.navigation_rate) {
+            openPlayStore();
+            return true;
+        } else if (id == R.id.navigation_admission) {
+            // Handle admission form action
+            Toast.makeText(this, "Admission Form clicked", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.student_list) {
+            navigateToActivity(StudentList.class);
+            return true;
+        } else if (id == R.id.navigation_contact) {
+            navigateToActivity(ContactForm.class);
+            return true;
+        } else if (id == R.id.navigation_developer) {
+            navigateToActivity(DeveloperActivity.class);
+            return true;
+        } else if (id == R.id.navigation_theme) {
+            showThemeSelectionDialog();
+            return true;
+        } else if (id == R.id.logout) {
+            handleLogout();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void fetchUserData() {
+        if (auth.getCurrentUser() == null) {
+            return; // No user logged in
+        }
+
+        String userId = Objects.requireNonNull(auth.getCurrentUser()).getUid(); // Get the current user's ID
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("users").document(userId).get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            String name = document.getString("name");
+                            String profileImageUrl = document.getString("profileImageUrl");
+
+                            // Update the Toolbar with the fetched data
+                            if (name != null && profileImageUrl != null) {
+                                studentName.setText(name);
+                                Glide.with(this)
+                                        .load(profileImageUrl)
+                                        .placeholder(R.drawable.profile)
+                                        .into(studentImage);
+                            }
+                        } else {
+                            Log.d("Firestore", "No such document");
+                        }
+                    } else {
+                        Log.e("Firestore", "Failed to fetch user data", task.getException());
+                        Toast.makeText(this, "Failed to fetch user data", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     @Override
@@ -118,9 +214,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.navigation_theme) {
             showThemeSelectionDialog();
         } else if (id == R.id.navigation_share) {
-            shareApp(); // No change, as this doesn't navigate to an activity.
+            shareApp();
         } else if (id == R.id.navigation_rate) {
-            openPlayStore(); // No change, as this doesn't navigate to an activity.
+            openPlayStore();
         } else {
             Toast.makeText(this, "Feature not implemented yet", Toast.LENGTH_SHORT).show();
         }
@@ -137,6 +233,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void handleLogout() {
         auth.signOut();
         Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+
+        // Reset the Toolbar to default values
+        studentName.setText(getString(R.string.guest));
+        studentImage.setImageResource(R.drawable.profile); // Default image
+
         openLoginActivity();
     }
 
@@ -162,9 +263,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm != null) {
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-            return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+            return activeNetwork == null || !activeNetwork.isConnectedOrConnecting();
         }
-        return false;
+        return true;
     }
 
     private void showNoInternetDialog() {
@@ -173,13 +274,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .setTitle("No Internet Connection")
                 .setMessage("Please check your internet connection and try again.")
                 .setPositiveButton("Retry", (dialog, which) -> {
-                    if (!isConnected()) showNoInternetDialog();
+                    if (isConnected()) showNoInternetDialog();
                 })
                 .setNegativeButton("Settings", (dialog, which) ->
                         startActivity(new Intent(android.provider.Settings.ACTION_WIFI_SETTINGS))
                 )
                 .show();
     }
+
     private void showThemeSelectionDialog() {
         // Create an AlertDialog with theme options
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -202,17 +304,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setLightTheme() {
-        setTheme(R.style.AppTheme_Light);  // Apply light theme
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         applyThemeChanges();
     }
 
     private void setDarkTheme() {
-        setTheme(R.style.AppTheme_Dark);   // Apply dark theme
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         applyThemeChanges();
     }
 
     private void setSystemDefaultTheme() {
-        // Apply system default theme based on the device setting
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         applyThemeChanges();
     }
@@ -222,7 +323,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == FILE_PICKER_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
